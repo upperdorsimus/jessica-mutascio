@@ -9,11 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --sage:       #6B9E8A;
   --sage-deep:  #3D6B58;
-  --sage-mid:   #4E8572;
   --sage-pale:  #B8D4CA;
   --blush:      #E8A898;
   --blush-deep: #C96B5A;
@@ -26,132 +24,109 @@
   --ink-light:  #7A6A60;
   --white:      #FAFAF7;
 }
-
 html { scroll-behavior: smooth; }
-body { font-family: 'Jost', sans-serif; font-weight: 300; color: var(--ink); overflow-x: hidden; }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--ink); overflow-x:hidden; }
 
 /* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 26px 56px;
-  transition: background 0.4s, padding 0.4s, border-color 0.4s;
+  position:fixed; top:0; left:0; right:0; z-index:900;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:26px 56px;
+  transition:background .4s, padding .4s;
 }
-nav.filled  { padding:15px 56px; background:rgba(245,239,228,0.95); backdrop-filter:blur(14px); border-bottom:1px solid rgba(201,137,122,0.14); }
-nav.dark    { padding:15px 56px; background:rgba(30,24,20,0.9);     backdrop-filter:blur(14px); border-bottom:1px solid rgba(107,158,138,0.12); }
-nav.green   { padding:15px 56px; background:rgba(61,107,88,0.88);   backdrop-filter:blur(14px); border-bottom:1px solid rgba(107,158,138,0.18); }
-.logo { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:400; letter-spacing:0.08em; color:var(--ink); text-decoration:none; transition:color 0.3s; }
-nav.dark .logo, nav.green .logo { color: var(--paper); }
-.nav-links { display:flex; gap:32px; list-style:none; }
-.nav-links a { font-size:0.66rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-mid); text-decoration:none; transition:color 0.2s; }
-nav.dark .nav-links a, nav.green .nav-links a { color:rgba(245,239,228,0.6); }
+nav.light  { padding:15px 56px; background:rgba(245,239,228,.95); backdrop-filter:blur(14px); border-bottom:1px solid rgba(201,137,122,.14); }
+nav.dark   { padding:15px 56px; background:rgba(30,24,20,.9);     backdrop-filter:blur(14px); border-bottom:1px solid rgba(107,158,138,.12); }
+nav.green  { padding:15px 56px; background:rgba(61,107,88,.88);   backdrop-filter:blur(14px); border-bottom:1px solid rgba(107,158,138,.18); }
+.logo { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:400; letter-spacing:.08em; color:var(--ink); text-decoration:none; transition:color .3s; }
+nav.dark .logo, nav.green .logo { color:var(--paper); }
+.nav-links { display:flex; gap:28px; list-style:none; flex-wrap:wrap; }
+.nav-links a { font-size:.64rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mid); text-decoration:none; transition:color .2s; }
+nav.dark .nav-links a, nav.green .nav-links a { color:rgba(245,239,228,.6); }
 .nav-links a:hover { color:var(--sage-deep); }
-nav.dark .nav-links a:hover  { color:var(--sage-pale); }
-nav.green .nav-links a:hover { color:var(--straw); }
+nav.dark .nav-links a:hover, nav.green .nav-links a:hover { color:var(--straw); }
+#prog { position:fixed; top:0; left:0; height:2px; background:var(--straw); z-index:1000; width:0%; }
 
-#prog { position:fixed; top:0; left:0; height:2px; background:var(--straw); z-index:1000; width:0%; transition:width 0.1s; }
-
-/* ════ SECTIONS ════ */
-/* Every section is fully visible by default — no hiding tricks */
+/* ══ SECTIONS — all visible, normal flow ══ */
 section { position:relative; overflow:hidden; }
 
 /* ── HERO ── */
-#hero {
-  min-height: 100vh;
-  background: var(--sage);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 120px 56px 80px;
-}
+#hero { min-height:100vh; background:var(--sage); display:flex; flex-direction:column; justify-content:center; padding:120px 56px 80px; }
 .hero-orbs { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
 .orb { position:absolute; border-radius:50%; filter:blur(80px); will-change:transform; }
-.orb1 { width:600px; height:500px; top:-100px;  right:-80px;   background:rgba(61,107,88,0.6); }
-.orb2 { width:400px; height:400px; bottom:-60px; left:-80px;   background:rgba(107,158,138,0.5); }
-.orb3 { width:280px; height:280px; bottom:120px; right:220px;  background:rgba(232,213,160,0.22); }
+.orb1 { width:600px; height:500px; top:-100px;  right:-80px;  background:rgba(61,107,88,.6); }
+.orb2 { width:400px; height:400px; bottom:-60px; left:-80px;  background:rgba(107,158,138,.5); }
+.orb3 { width:280px; height:280px; bottom:120px; right:220px; background:rgba(232,213,160,.22); }
 .hero-content { position:relative; z-index:2; }
-.h-eye  { font-size:0.62rem; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:rgba(245,239,228,0.7); margin-bottom:20px; opacity:0; animation:up 0.9s ease 0.3s forwards; }
-.h-name { font-family:'DM Serif Display',serif; font-size:clamp(4.5rem,11vw,10rem); font-weight:400; line-height:0.93; color:var(--white); margin-bottom:36px; opacity:0; animation:up 1s ease 0.5s forwards; }
+.h-eye  { font-size:.62rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(245,239,228,.7); margin-bottom:20px; opacity:0; animation:up .9s ease .3s forwards; }
+.h-name { font-family:'DM Serif Display',serif; font-size:clamp(4.5rem,11vw,10rem); font-weight:400; line-height:.93; color:var(--white); margin-bottom:36px; opacity:0; animation:up 1s ease .5s forwards; }
 .h-name em { font-style:italic; color:var(--straw); }
-.h-sub  { font-size:0.72rem; font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,239,228,0.6); line-height:2.2; opacity:0; animation:up 1s ease 0.7s forwards; }
+.h-sub  { font-size:.72rem; font-weight:400; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,239,228,.6); line-height:2.2; opacity:0; animation:up 1s ease .7s forwards; }
 .h-hint { position:absolute; bottom:44px; left:56px; display:flex; align-items:center; gap:12px; opacity:0; animation:fadein 1s ease 1.4s forwards; }
-.h-hint span { font-size:0.57rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:rgba(245,239,228,0.6); }
+.h-hint span { font-size:.57rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,239,228,.6); }
 .bdots { display:flex; gap:5px; }
-.bd { width:5px; height:5px; border-radius:50%; background:rgba(245,239,228,0.6); animation:blink 1.5s ease infinite; }
-.bd:nth-child(2){animation-delay:.22s} .bd:nth-child(3){animation-delay:.44s}
+.bd { width:5px; height:5px; border-radius:50%; background:rgba(245,239,228,.6); animation:blink 1.5s ease infinite; }
+.bd:nth-child(2){animation-delay:.22s}.bd:nth-child(3){animation-delay:.44s}
+
+/* ── SECTION TABS (work category nav) ── */
+.section-tabs { display:flex; gap:0; border-bottom:1px solid rgba(0,0,0,.1); margin-bottom:48px; position:relative; z-index:2; }
+.tab { font-size:.6rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; padding:14px 24px; cursor:pointer; color:var(--ink-light); border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .2s, border-color .2s; }
+.tab.active { color:var(--ink); border-bottom-color:var(--clay); }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* Dark section tabs */
+.dark-tabs .section-tabs { border-bottom-color:rgba(255,255,255,.1); }
+.dark-tabs .tab { color:rgba(245,239,228,.4); }
+.dark-tabs .tab.active { color:var(--white); border-bottom-color:var(--sage); }
 
 /* ── REEL ── */
-#reel {
-  min-height: 100vh;
-  background: var(--ink);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 80px 56px;
-}
-.reel-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 45% at 50% 50%, rgba(107,158,138,0.12) 0%, transparent 65%); }
-.reel-bg-word { position:absolute; bottom:44px; right:56px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(3.5rem,7vw,6.5rem); font-weight:300; color:rgba(107,158,138,0.08); line-height:1; pointer-events:none; user-select:none; will-change:transform; }
-.sec-lbl { font-size:0.57rem; font-weight:500; letter-spacing:0.32em; text-transform:uppercase; color:var(--sage); margin-bottom:30px; display:flex; align-items:center; gap:14px; position:relative; z-index:2; }
+#reel { min-height:100vh; background:var(--ink); display:flex; flex-direction:column; justify-content:center; padding:80px 56px; }
+.reel-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 45% at 50% 50%,rgba(107,158,138,.12) 0%,transparent 65%); }
+.reel-bg-word { position:absolute; bottom:44px; right:56px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(3.5rem,7vw,6.5rem); font-weight:300; color:rgba(107,158,138,.07); line-height:1; pointer-events:none; user-select:none; will-change:transform; }
+.sec-lbl { font-size:.57rem; font-weight:500; letter-spacing:.32em; text-transform:uppercase; color:var(--sage); margin-bottom:30px; display:flex; align-items:center; gap:14px; position:relative; z-index:2; }
 .sec-lbl::after { content:''; width:42px; height:1px; background:var(--sage); opacity:.4; }
-.reel-embed { position:relative; width:100%; max-width:900px; aspect-ratio:16/9; background:#080604; border:1px solid rgba(107,158,138,0.18); z-index:2; }
+.reel-embed { position:relative; width:100%; max-width:900px; aspect-ratio:16/9; background:#080604; border:1px solid rgba(107,158,138,.18); z-index:2; }
 .reel-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
-.reel-cap { margin-top:16px; position:relative; z-index:2; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.9rem; color:rgba(184,212,202,0.5); letter-spacing:0.04em; }
+.reel-cap { margin-top:16px; position:relative; z-index:2; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.9rem; color:rgba(184,212,202,.5); letter-spacing:.04em; }
 
-/* ── WORK ── */
-#work { background:var(--paper-dark); }
+/* ── WORK SECTIONS ── */
+.work-section { background:var(--paper-dark); }
+.work-section-alt { background:var(--ink); }
 .work-blobs { position:absolute; inset:0; pointer-events:none; overflow:hidden; will-change:transform; }
 .wb { position:absolute; border-radius:50%; filter:blur(90px); }
-.wb1 { width:500px; height:400px; top:-80px;  right:-100px; background:rgba(196,120,74,0.16); }
-.wb2 { width:350px; height:350px; bottom:50px; left:-60px;  background:rgba(232,168,152,0.12); }
-.work-inner { position:relative; z-index:2; padding:80px 56px 60px; }
-.work-ttl { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:300; line-height:0.95; color:var(--ink); margin-bottom:40px; }
-.work-ttl em { font-style:italic; color:var(--clay); }
+.wb1 { width:500px; height:400px; top:-80px;  right:-100px; background:rgba(196,120,74,.16); }
+.wb2 { width:350px; height:350px; bottom:50px; left:-60px;  background:rgba(232,168,152,.12); }
+.section-inner { position:relative; z-index:2; padding:80px 56px 60px; }
+.section-heading { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4.5rem); font-weight:300; line-height:.95; color:var(--ink); margin-bottom:40px; }
+.section-heading em { font-style:italic; color:var(--clay); }
+.section-heading.light { color:var(--white); }
+.section-heading.light em { color:var(--blush); }
 
-/* Work grid */
+/* Grid */
 .wgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
 .wi { position:relative; aspect-ratio:16/9; overflow:hidden; cursor:pointer; background:var(--ink); }
 .wi.w { grid-column:span 2; }
-
-.wi-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; transition:transform .65s cubic-bezier(.16,1,.3,1), opacity .4s; opacity:.68; }
+.wi-bg { width:100%; height:100%; display:flex; align-items:center; justify-content:center; transition:transform .65s cubic-bezier(.16,1,.3,1),opacity .4s; opacity:.68; }
 .wi:hover .wi-bg { transform:scale(1.05); opacity:.42; }
 .wi-bg span { font-family:'Cormorant Garamond',serif; font-style:italic; color:rgba(255,255,255,.05); }
-
-/* Permanent bottom gradient */
-.wi::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(15,12,10,0.75) 0%, rgba(15,12,10,0.1) 50%, transparent 100%); pointer-events:none; z-index:1; }
-
-/* Static label — visible by default, fades out on hover */
-.wi-lbl { position:absolute; bottom:16px; left:18px; right:18px; z-index:2; transition:opacity 0.25s, transform 0.25s; }
+.wi::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(15,12,10,.75) 0%,rgba(15,12,10,.1) 50%,transparent 100%); pointer-events:none; z-index:1; }
+.wi-lbl { position:absolute; bottom:16px; left:18px; right:18px; z-index:2; transition:opacity .25s,transform .25s; }
 .wi:hover .wi-lbl { opacity:0; transform:translateY(5px); }
-
-/* Hover panel — hidden by default, slides up on hover */
-.wi-hov {
-  position:absolute; inset:0; z-index:3;
-  background:linear-gradient(to top, rgba(15,12,10,0.96) 0%, rgba(15,12,10,0.65) 55%, transparent 100%);
-  display:flex; flex-direction:column; justify-content:flex-end; padding:22px;
-  opacity:0; transform:translateY(8px);
-  transition:opacity .3s ease, transform .3s ease;
-}
+.wi-hov { position:absolute; inset:0; z-index:3; background:linear-gradient(to top,rgba(15,12,10,.96) 0%,rgba(15,12,10,.65) 55%,transparent 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:22px; opacity:0; transform:translateY(8px); transition:opacity .3s ease,transform .3s ease; }
 .wi:hover .wi-hov { opacity:1; transform:translateY(0); }
-
 .wi-cl { font-family:'Cormorant Garamond',serif; font-size:1.12rem; font-weight:400; color:#fff; line-height:1.1; }
 .wi.w .wi-cl { font-size:1.5rem; }
 .wi-ty { font-size:.54rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--blush); margin-top:4px; }
 .wi-cr { font-size:.57rem; color:rgba(255,255,255,.45); margin-top:8px; line-height:1.65; border-top:1px solid rgba(255,255,255,.08); padding-top:8px; }
-.wi-btn {
-  display:inline-flex; align-items:center; gap:7px; margin-top:12px;
-  font-size:.56rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
-  color:var(--white); background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.22); padding:6px 14px; border-radius:2px;
-  text-decoration:none; transition:background .2s, border-color .2s; backdrop-filter:blur(4px);
-}
+.wi-btn { display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:.56rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--white); background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22); padding:6px 14px; border-radius:2px; text-decoration:none; transition:background .2s,border-color .2s; backdrop-filter:blur(4px); }
 .wi-btn:hover { background:rgba(255,255,255,.22); border-color:rgba(255,255,255,.4); }
 .wi-btn svg { width:8px; height:8px; fill:currentColor; }
 
 /* ── ABOUT ── */
-#about {
-  min-height: 100vh;
-  background: var(--blush);
-  display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:64px; padding:100px 56px;
-}
-.about-deco { position:absolute; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38rem; line-height:0.75; font-weight:300; color:rgba(201,107,90,0.08); top:-80px; left:-30px; pointer-events:none; user-select:none; will-change:transform; }
+#about { min-height:100vh; background:var(--blush); display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:64px; padding:100px 56px; }
+.about-deco { position:absolute; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38rem; line-height:.75; font-weight:300; color:rgba(201,107,90,.08); top:-80px; left:-30px; pointer-events:none; user-select:none; will-change:transform; }
 .aqm { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; color:var(--blush-deep); line-height:1; margin-bottom:-12px; display:block; }
-.about-q { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2.2vw,2rem); font-weight:300; font-style:italic; line-height:1.44; color:var(--ink); margin-bottom:26px; padding-bottom:26px; border-bottom:1px solid rgba(201,107,90,0.28); position:relative; z-index:1; }
+.about-q { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2.2vw,2rem); font-weight:300; font-style:italic; line-height:1.44; color:var(--ink); margin-bottom:26px; padding-bottom:26px; border-bottom:1px solid rgba(201,107,90,.28); position:relative; z-index:1; }
 .about-q cite { display:block; font-size:.58rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--blush-deep); font-style:normal; margin-top:10px; }
 .about-body { font-size:.86rem; line-height:2; color:var(--ink-mid); position:relative; z-index:1; }
 .about-body p+p { margin-top:12px; }
@@ -162,17 +137,12 @@ section { position:relative; overflow:hidden; }
 .acc-pr { font-size:.57rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--blush-deep); opacity:.75; margin-top:2px; display:block; }
 
 /* ── CONTACT ── */
-#contact {
-  min-height: 100vh;
-  background: var(--sage);
-  display:flex; flex-direction:column; justify-content:center; padding:80px 56px;
-  overflow:hidden;
-}
+#contact { min-height:100vh; background:var(--sage); display:flex; flex-direction:column; justify-content:center; padding:80px 56px; overflow:hidden; }
 .contact-circles { position:absolute; inset:0; pointer-events:none; overflow:hidden; will-change:transform; }
 .cc { position:absolute; border-radius:50%; filter:blur(70px); }
-.cc1 { width:500px; height:500px; right:-150px; top:-100px; background:rgba(61,107,88,0.45); }
-.cc2 { width:350px; height:350px; left:-100px; bottom:-80px; background:rgba(107,158,138,0.35); }
-.contact-deco { position:absolute; right:-10px; bottom:-80px; font-family:'Cormorant Garamond',serif; font-size:clamp(10rem,20vw,18rem); font-weight:300; font-style:italic; color:rgba(61,107,88,0.22); line-height:1; pointer-events:none; user-select:none; will-change:transform; }
+.cc1 { width:500px; height:500px; right:-150px; top:-100px; background:rgba(61,107,88,.45); }
+.cc2 { width:350px; height:350px; left:-100px; bottom:-80px; background:rgba(107,158,138,.35); }
+.contact-deco { position:absolute; right:-10px; bottom:-80px; font-family:'Cormorant Garamond',serif; font-size:clamp(10rem,20vw,18rem); font-weight:300; font-style:italic; color:rgba(61,107,88,.22); line-height:1; pointer-events:none; user-select:none; will-change:transform; }
 .c-eye  { font-size:.58rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(245,239,228,.62); margin-bottom:16px; position:relative; z-index:2; }
 .c-ttl  { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,9vw,9rem); font-weight:300; font-style:italic; color:var(--white); line-height:.9; margin-bottom:40px; position:relative; z-index:2; }
 .c-sub  { font-size:.78rem; font-weight:300; color:rgba(245,239,228,.7); line-height:2; margin-bottom:38px; position:relative; z-index:2; }
@@ -190,103 +160,60 @@ section { position:relative; overflow:hidden; }
 .modal-x { position:absolute; top:-34px; right:0; background:none; border:none; color:var(--blush); font-size:.6rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; transition:color .2s; }
 .modal-x:hover { color:#fff; }
 
-/* ══════════════════════════════════
-   SCROLL TRANSITIONS
+/* ══════════════════════════════
+   SCROLL WIPE TRANSITIONS
    
-   Each section (except hero) gets a solid-colour
-   overlay via a child .section-curtain div.
-   It starts covering the full section (translateY 0)
-   and slides UP out of view (translateY -100%) when
-   the section's .in-view class is added.
+   Uses scroll position (window.scrollY) directly in a
+   requestAnimationFrame loop. Each .wipe-wrap contains:
+   - .wipe-panel: the coloured curtain, translates from
+     translateY(0) to translateY(-100%) as you scroll
+     the section into view. Driven by scrollY math, not
+     IntersectionObserver or CSS custom properties.
    
-   Content inside sections starts slightly translated
-   down and fades in once .in-view fires.
-   ══════════════════════════════════ */
+   Content is ALWAYS visible — wipe-panel sits on top
+   and slides away. No hiding of actual content.
+   ══════════════════════════════ */
 
-/* Curtain div — appended by JS into each section */
-.s-curtain {
+.wipe-wrap {
+  position: relative;
+  overflow: hidden;
+}
+/* The curtain panel — sits above everything, slides up on scroll */
+.wipe-panel {
   position: absolute;
   inset: 0;
-  z-index: 20;
+  z-index: 50;
   pointer-events: none;
-  transform: translateY(0%);
-  transition: transform 0.9s cubic-bezier(0.77, 0, 0.18, 1);
   will-change: transform;
+  /* starts fully covering — JS sets translateY each frame */
+  transform: translateY(0%);
 }
-section.in-view .s-curtain {
-  transform: translateY(-100%);
-}
+/* Colour per section — matches bg of previous section */
+#reel    .wipe-panel { background: var(--sage); }
+#commercial .wipe-panel { background: var(--ink); }
+#narrative  .wipe-panel { background: var(--paper-dark); }
+#about      .wipe-panel { background: var(--paper-dark); }
+#contact    .wipe-panel { background: var(--blush); }
 
-/* Curtain colours — each matches the section above it */
-#reel    .s-curtain { background: var(--sage); }
-#work    .s-curtain { background: var(--ink); }
-#about   .s-curtain { background: var(--paper-dark); }
-#contact .s-curtain { background: var(--blush); }
-
-/* Content reveal — children of .reveal-children animate in
-   after the curtain has started moving */
-.reveal-el {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-section.in-view .reveal-el {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Stagger children */
-section.in-view .reveal-el:nth-child(1) { transition-delay: 0.35s; }
-section.in-view .reveal-el:nth-child(2) { transition-delay: 0.45s; }
-section.in-view .reveal-el:nth-child(3) { transition-delay: 0.55s; }
-section.in-view .reveal-el:nth-child(4) { transition-delay: 0.65s; }
-section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
-
-/* Work tiles stagger in */
-.wi {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
-}
-#work.in-view .wi { opacity: 1; transform: translateY(0); }
-#work.in-view .wi:nth-child(1) { transition-delay: 0.4s; }
-#work.in-view .wi:nth-child(2) { transition-delay: 0.48s; }
-#work.in-view .wi:nth-child(3) { transition-delay: 0.56s; }
-#work.in-view .wi:nth-child(4) { transition-delay: 0.64s; }
-#work.in-view .wi:nth-child(5) { transition-delay: 0.72s; }
-#work.in-view .wi:nth-child(6) { transition-delay: 0.80s; }
-#work.in-view .wi:nth-child(7) { transition-delay: 0.88s; }
-#work.in-view .wi:nth-child(8) { transition-delay: 0.96s; }
-
-/* Accolade items slide in */
-.acc-item {
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-#about.in-view .acc-item { opacity: 1; transform: translateX(0); }
-#about.in-view .acc-item:nth-child(1) { transition-delay: 0.5s; }
-#about.in-view .acc-item:nth-child(2) { transition-delay: 0.58s; }
-#about.in-view .acc-item:nth-child(3) { transition-delay: 0.66s; }
-#about.in-view .acc-item:nth-child(4) { transition-delay: 0.74s; }
-#about.in-view .acc-item:nth-child(5) { transition-delay: 0.82s; }
-#about.in-view .acc-item:nth-child(6) { transition-delay: 0.90s; }
-#about.in-view .acc-item:nth-child(7) { transition-delay: 0.98s; }
+/* ── KEYFRAMES ── */
 @keyframes up     { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 @keyframes fadein { from{opacity:0} to{opacity:1} }
 @keyframes blink  { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
 
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
-  nav,nav.filled,nav.dark,nav.green { padding:14px 20px !important; }
-  .nav-links { gap:18px; }
-  #hero  { padding:100px 22px 80px; }
+  nav,nav.light,nav.dark,nav.green { padding:14px 20px !important; }
+  .nav-links { gap:14px; }
+  #hero { padding:100px 22px 80px; }
   .h-hint { left:22px; }
-  #reel, #contact { padding:60px 22px; }
-  .work-inner { padding:60px 22px 40px; }
+  #reel,#contact { padding:60px 22px; }
+  .section-inner { padding:60px 22px 40px; }
   #about { grid-template-columns:1fr; padding:60px 22px; gap:36px; }
   .wgrid { grid-template-columns:1fr; }
-  .wi.w  { grid-column:span 1; }
+  .wi.w { grid-column:span 1; }
   .c-foot { padding:14px 22px; }
+  .section-tabs { flex-wrap:wrap; }
+  .tab { padding:10px 16px; }
 }
 </style>
 </head>
@@ -298,7 +225,8 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
   <a class="logo" href="#hero">Jessica Mutascio</a>
   <ul class="nav-links">
     <li><a href="#reel">Reel</a></li>
-    <li><a href="#work">Work</a></li>
+    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#narrative">Narrative</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -314,7 +242,7 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
   <div class="hero-content">
     <p class="h-eye">Award-Winning Editor</p>
     <h1 class="h-name">Jessica<br><em>Mutascio</em></h1>
-    <p class="h-sub">Commercials &nbsp;·&nbsp; Music Videos<br>Short &amp; Longform Film</p>
+    <p class="h-sub">Commercials &nbsp;·&nbsp; Music Videos &nbsp;·&nbsp; Film</p>
   </div>
   <div class="h-hint">
     <div class="bdots"><div class="bd"></div><div class="bd"></div><div class="bd"></div></div>
@@ -323,40 +251,33 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
 </section>
 
 <!-- ════ REEL ════ -->
-<section id="reel">
+<section id="reel" class="wipe-wrap">
+  <div class="wipe-panel"></div>
   <div class="reel-glow"></div>
   <div class="reel-bg-word" id="reelWord">Reel</div>
-  <p class="sec-lbl reveal-el">Showreel</p>
-  <div class="reel-embed reveal-el">
-    <!-- ↓ Replace VIMEO_SHOWREEL_ID with the numeric ID from Jessica's showreel Vimeo URL -->
+  <p class="sec-lbl">Showreel</p>
+  <div class="reel-embed">
+    <!-- Replace VIMEO_SHOWREEL_ID with the numeric Vimeo ID -->
     <iframe src="https://player.vimeo.com/video/VIMEO_SHOWREEL_ID?color=6b9e8a&title=0&byline=0&portrait=0"
       allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
-  <p class="reel-cap reveal-el">Editor's Showreel — 2024</p>
+  <p class="reel-cap">Editor's Showreel — 2024</p>
 </section>
 
-<!-- ════ WORK ════ -->
-<section id="work">
-  <div class="work-blobs" id="workBlobs">
-    <div class="wb wb1"></div>
-    <div class="wb wb2"></div>
+<!-- ════ COMMERCIAL ════ -->
+<section id="commercial" class="work-section wipe-wrap">
+  <div class="wipe-panel"></div>
+  <div class="work-blobs" id="workBlobs1">
+    <div class="wb wb1"></div><div class="wb wb2"></div>
   </div>
-  <div class="work-inner">
-    <h2 class="work-ttl reveal-el">Selected <em>Work</em></h2>
-    <div class="wgrid">
-
-      <!-- ↓ Replace each VIMEO_XXXXX_ID with the numeric ID from that video's Vimeo URL -->
+  <div class="section-inner">
+    <h2 class="section-heading">Commercial <em>Work</em></h2>
+    <div class="wgrid" id="commercial-grid">
 
       <div class="wi w" data-vimeo="VIMEO_BOA_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#3a3028,#24201c)"><span style="font-size:3.5rem">Bank of America</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">Bank of America</p><p class="wi-cr">Dir. Mark Albiston · The Sweet Shop · Hill Holliday</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BOA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Bank of America</p><p class="wi-ty">"Journey" · Commercial</p></div>
-      </div>
-
-      <div class="wi" data-vimeo="VIMEO_BACKPEDAL_ID">
-        <div class="wi-bg" style="background:linear-gradient(135deg,#3a2828,#241c1c)"><span style="font-size:2rem">Backpedal</span></div>
-        <div class="wi-hov"><p class="wi-ty">Short Film · Award Winner</p><p class="wi-cl">Backpedal</p><p class="wi-cr">Dir. Dani Pearce · Finch · Flickerfest Best Editing</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BACKPEDAL_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
-        <div class="wi-lbl"><p class="wi-cl">Backpedal</p><p class="wi-ty">Short Film</p></div>
       </div>
 
       <div class="wi" data-vimeo="VIMEO_LINCOLN_ID">
@@ -377,16 +298,16 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
         <div class="wi-lbl"><p class="wi-cl">Southern Cross</p><p class="wi-ty">"Advice to the Younger Me"</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_MAHALIA_ID">
-        <div class="wi-bg" style="background:linear-gradient(135deg,#2a2040,#1a1428)"><span style="font-size:2rem">Mahalia ft JoJo</span></div>
-        <div class="wi-hov"><p class="wi-ty">Music Video</p><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-cr">Dir. Boma Iluma · Caviar · Exile Edit</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MAHALIA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
-        <div class="wi-lbl"><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-ty">"Cheat" · Music Video</p></div>
-      </div>
-
       <div class="wi" data-vimeo="VIMEO_CENSUS_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#283040,#182028)"><span style="font-size:2rem">Census 2020</span></div>
         <div class="wi-hov"><p class="wi-ty">PSA</p><p class="wi-cl">Census 2020</p><p class="wi-cr">Dir. Olivier Gondry · Partizan · VMLY&amp;R</p><a href="#" class="wi-btn" onclick="openM('VIMEO_CENSUS_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Census 2020</p><p class="wi-ty">PSA · Dir. Olivier Gondry</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_MAHALIA_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#2a2040,#1a1428)"><span style="font-size:2rem">Mahalia ft JoJo</span></div>
+        <div class="wi-hov"><p class="wi-ty">Music Video</p><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-cr">Dir. Boma Iluma · Caviar · Exile Edit</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MAHALIA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-ty">"Cheat" · Music Video</p></div>
       </div>
 
       <div class="wi w" data-vimeo="VIMEO_BIKEEXCHANGE_ID">
@@ -395,14 +316,80 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
         <div class="wi-lbl"><p class="wi-cl">Bike Exchange</p><p class="wi-ty">"Look At This Bike"</p></div>
       </div>
 
+      <div class="wi" data-vimeo="VIMEO_ATT_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#203040,#141e28)"><span style="font-size:2rem">AT&amp;T</span></div>
+        <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">AT&amp;T</p><p class="wi-cr">Dir. Lance Acord · Park Pictures · BBDO</p><a href="#" class="wi-btn" onclick="openM('VIMEO_ATT_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">AT&amp;T</p><p class="wi-ty">"Connect &amp; Play" · Commercial</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_IKEA_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#2a2820,#1a1810)"><span style="font-size:2rem">IKEA</span></div>
+        <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">IKEA</p><p class="wi-cr">Dir. Olivier Gondry · Partizan · Ogilvy NY</p><a href="#" class="wi-btn" onclick="openM('VIMEO_IKEA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">IKEA</p><p class="wi-ty">"Why We Make" · Commercial</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ NARRATIVE ════ -->
+<section id="narrative" class="work-section-alt wipe-wrap">
+  <div class="wipe-panel"></div>
+  <div class="section-inner dark-tabs">
+    <h2 class="section-heading light">Narrative <em style="color:var(--sage)">Work</em></h2>
+    <div class="wgrid">
+
+      <div class="wi w" data-vimeo="VIMEO_BACKPEDAL_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#3a2828,#241c1c)"><span style="font-size:3.5rem">Backpedal</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film · Multiple Award Winner</p><p class="wi-cl">Backpedal</p><p class="wi-cr">Dir. Dani Pearce · Finch · Flickerfest Best Editing · Cannes Gold</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BACKPEDAL_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Backpedal</p><p class="wi-ty">Short Film · Award Winner</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_CANARY_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#302820,#201810)"><span style="font-size:2rem">Canary</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film (Trailer)</p><p class="wi-cl">Canary</p><p class="wi-cr">Dir. Chuck Vuolo · Official Selection: Boston Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_CANARY_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Canary</p><p class="wi-ty">Short Film (Trailer)</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_YOUNGKING_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#1e2c30,#141c20)"><span style="font-size:2rem">The Young King</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film (Teaser)</p><p class="wi-cl">The Young King</p><p class="wi-cr">Dir. Larin Sullivan · Trinket Films · Inside Out, Outfest</p><a href="#" class="wi-btn" onclick="openM('VIMEO_YOUNGKING_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">The Young King</p><p class="wi-ty">Short Film (Teaser)</p></div>
+      </div>
+
+      <div class="wi w" data-vimeo="VIMEO_BRIEFEXCHANGES_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#2a2030,#1a1420)"><span style="font-size:3.5rem">Brief Exchanges</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film · Award Winner</p><p class="wi-cl">Brief Exchanges</p><p class="wi-cr">Dir. Ashley Versher · Black Women Film Network Best Editing</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BRIEFEXCHANGES_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Brief Exchanges</p><p class="wi-ty">Short Film · Best Editing Award</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_MAX_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#282028,#181218)"><span style="font-size:2rem">Max</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film (Trailer)</p><p class="wi-cl">Max</p><p class="wi-cr">Dir. Ant McPhail · Rhode Island Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MAX_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Max</p><p class="wi-ty">Short Film (Trailer)</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_MARSHES_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#1e2820,#121814)"><span style="font-size:2rem">The Marshes</span></div>
+        <div class="wi-hov"><p class="wi-ty">Feature Film (Trailer)</p><p class="wi-cl">The Marshes</p><p class="wi-cr">Dir. Roger Scott · 28 Productions · Deluxe Australia</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MARSHES_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">The Marshes</p><p class="wi-ty">Feature Film (Trailer)</p></div>
+      </div>
+
+      <div class="wi" data-vimeo="VIMEO_SOLOTRIP_ID">
+        <div class="wi-bg" style="background:linear-gradient(135deg,#302018,#201410)"><span style="font-size:2rem">Solo Trip</span></div>
+        <div class="wi-hov"><p class="wi-ty">Short Film (Teaser)</p><p class="wi-cl">Solo Trip</p><p class="wi-cr">Dir. Travis Roman · NY Shorts Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_SOLOTRIP_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
+        <div class="wi-lbl"><p class="wi-cl">Solo Trip</p><p class="wi-ty">Short Film (Teaser)</p></div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ════ ABOUT ════ -->
-<section id="about">
+<section id="about" class="wipe-wrap">
+  <div class="wipe-panel"></div>
   <div class="about-deco" id="aboutDeco">"</div>
-  <div style="position:relative;z-index:2" class="reveal-el">
+  <div style="position:relative;z-index:2">
     <span class="aqm">"</span>
     <p class="about-q">I never made one of my discoveries through a process of rational thinking.<cite>— Albert Einstein</cite></p>
     <div class="about-body">
@@ -411,7 +398,7 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
       <p>Currently splitting her time between New York City and the San Francisco Bay Area — though always down to hop on a plane.</p>
     </div>
   </div>
-  <div style="position:relative;z-index:2" class="reveal-el">
+  <div style="position:relative;z-index:2">
     <p class="acc-h">Selected Accolades</p>
     <ul class="acc-list">
       <li class="acc-item"><span class="acc-aw">Flickerfest — Best Editing, Australian Short</span><span class="acc-pr">"Backpedal"</span></li>
@@ -426,17 +413,17 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
 </section>
 
 <!-- ════ CONTACT ════ -->
-<section id="contact">
+<section id="contact" class="wipe-wrap">
+  <div class="wipe-panel"></div>
   <div class="contact-circles" id="contactCircles">
-    <div class="cc cc1"></div>
-    <div class="cc cc2"></div>
+    <div class="cc cc1"></div><div class="cc cc2"></div>
   </div>
   <div class="contact-deco" id="contactDeco">Hello</div>
-  <p class="c-eye reveal-el">Let's Work Together</p>
-  <h2 class="c-ttl reveal-el">Get<br>In Touch</h2>
-  <p class="c-sub reveal-el">Available for commercials, music videos,<br>short &amp; longform. Based in New York City<br>and the San Francisco Bay Area.</p>
-  <a href="mailto:hello@jessicamutascio.com" class="c-email reveal-el">hello@jessicamutascio.com</a>
-  <p class="c-loc reveal-el">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
+  <p class="c-eye">Let's Work Together</p>
+  <h2 class="c-ttl">Get<br>In Touch</h2>
+  <p class="c-sub">Available for commercials, music videos,<br>short &amp; longform. Based in New York City<br>and the San Francisco Bay Area.</p>
+  <a href="mailto:hello@jessicamutascio.com" class="c-email">hello@jessicamutascio.com</a>
+  <p class="c-loc">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
   <div class="c-foot"><p>© 2024 Jessica Mutascio</p><p>Editor</p></div>
 </section>
 
@@ -449,77 +436,89 @@ section.in-view .reveal-el:nth-child(5) { transition-delay: 0.75s; }
 </div>
 
 <script>
+// ═══════════════════════════════════════════════════
+//  WIPE TRANSITION ENGINE — scrollY driven, rAF loop
+//
+//  For each .wipe-wrap section:
+//  - Measure the section's position each frame
+//  - When section top enters viewport (rect.top < vh):
+//    animate wipe-panel from translateY(0%) → translateY(-100%)
+//  - Progress: 0 when section top = viewport bottom
+//              1 when section top = viewport top
+//  - Panel slides off as section scrolls into view
+//  - When section scrolls out upward, panel resets to 0
+//    so it can wipe again on scroll back down
+// ═══════════════════════════════════════════════════
+
+const sections = Array.from(document.querySelectorAll('.wipe-wrap'));
+const panels   = sections.map(s => s.querySelector('.wipe-panel'));
+
 const nav  = document.getElementById('nav');
 const prog = document.getElementById('prog');
-
-// ── Inject curtain divs into each wipe section ──
-['reel','work','about','contact'].forEach(id => {
-  const sec = document.getElementById(id);
-  const curtain = document.createElement('div');
-  curtain.className = 's-curtain';
-  sec.insertBefore(curtain, sec.firstChild);
-});
-
-// ── IntersectionObserver — fires .in-view when section enters viewport ──
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      // Don't unobserve — keep in-view permanent once triggered
-    }
-  });
-}, {
-  threshold: 0.15   // trigger when 15% of section is visible
-});
-
-document.querySelectorAll('#reel, #work, #about, #contact').forEach(sec => {
-  observer.observe(sec);
-});
 
 // Parallax elements
 const heroOrbs      = document.getElementById('heroOrbs');
 const reelWord      = document.getElementById('reelWord');
-const workBlobs     = document.getElementById('workBlobs');
+const workBlobs1    = document.getElementById('workBlobs1');
 const aboutDeco     = document.getElementById('aboutDeco');
 const contactDeco   = document.getElementById('contactDeco');
-const contactCircles = document.getElementById('contactCircles');
+const contactCircles= document.getElementById('contactCircles');
 
-// Nav colour per section
-const navMap = { hero:'green', reel:'dark', work:'filled', about:'filled', contact:'green' };
+const navMap = {
+  hero:'green', reel:'dark', commercial:'light',
+  narrative:'dark', about:'light', contact:'green'
+};
 let lastNav = 'green';
 
-function update() {
+function ease(t) {
+  // Cubic ease-out — snappy at start, smooth landing
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function frame() {
   const sy  = window.scrollY;
   const vh  = window.innerHeight;
-  const docH = document.body.scrollHeight - vh;
+  const docH= document.body.scrollHeight - vh;
 
-  // Progress
-  if (docH > 0) prog.style.width = Math.min(sy / docH * 100, 100) + '%';
+  // Progress bar
+  if (docH > 0) prog.style.width = Math.min(sy/docH*100,100)+'%';
 
-  // Parallax — simple translateY, different speeds per element
-  if (heroOrbs) heroOrbs.style.transform = `translateY(${sy * 0.25}px)`;
+  // ── WIPE PANELS ──
+  sections.forEach((sec, i) => {
+    const panel = panels[i];
+    if (!panel) return;
+    const rect = sec.getBoundingClientRect();
 
-  const getP = id => -(document.getElementById(id)?.getBoundingClientRect().top ?? 0) / vh;
+    // t goes 0→1 as section scrolls from viewport-bottom to viewport-top
+    // We complete the wipe in the first 80% of that travel for snappiness
+    const raw = (1 - rect.top / vh) / 0.8;
+    const t   = Math.max(0, Math.min(1, raw));
+    const y   = -ease(t) * 100;
+    panel.style.transform = `translateY(${y}%)`;
+  });
 
-  if (reelWord)       reelWord.style.transform       = `translateY(${getP('reel')    * 38}px)`;
-  if (workBlobs)      workBlobs.style.transform       = `translateY(${getP('work')    * 48}px)`;
-  if (aboutDeco)      aboutDeco.style.transform       = `translateY(${getP('about')   * 55}px)`;
-  if (contactDeco)    contactDeco.style.transform     = `translateY(${getP('contact') * 42}px)`;
-  if (contactCircles) contactCircles.style.transform  = `translateY(${getP('contact') * 28}px)`;
+  // ── PARALLAX ──
+  const p = id => -(document.getElementById(id)?.getBoundingClientRect().top ?? 0) / vh;
+  if (heroOrbs)       heroOrbs.style.transform       = `translateY(${sy*.24}px)`;
+  if (reelWord)       reelWord.style.transform       = `translateY(${p('reel')    *38}px)`;
+  if (workBlobs1)     workBlobs1.style.transform     = `translateY(${p('commercial')*44}px)`;
+  if (aboutDeco)      aboutDeco.style.transform      = `translateY(${p('about')   *55}px)`;
+  if (contactDeco)    contactDeco.style.transform    = `translateY(${p('contact') *42}px)`;
+  if (contactCircles) contactCircles.style.transform = `translateY(${p('contact') *28}px)`;
 
-  // Nav
+  // ── NAV ──
   let active = 'green';
-  ['reel','work','about','contact'].forEach(id => {
+  ['reel','commercial','narrative','about','contact'].forEach(id => {
     const r = document.getElementById(id)?.getBoundingClientRect();
     if (r && r.top < vh * 0.5) active = navMap[id];
   });
   if (active !== lastNav) { nav.className = active; lastNav = active; }
+
+  requestAnimationFrame(frame);
 }
+requestAnimationFrame(frame);
 
-// rAF loop — always smooth
-(function loop() { update(); requestAnimationFrame(loop); })();
-
-// Smooth scroll for nav links
+// Smooth nav scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -531,7 +530,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 document.querySelectorAll('.wi[data-vimeo]').forEach(el => {
   el.addEventListener('click', () => {
     const id = el.dataset.vimeo;
-    // Only open if the ID has been filled in (not still a placeholder)
     if (id && !id.startsWith('VIMEO_')) openM(id);
   });
 });
