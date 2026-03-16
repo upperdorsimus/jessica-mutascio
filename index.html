@@ -17,18 +17,23 @@
   --paper:#F5EFE4; --paper-d:#EDE4D4;
   --ink:#1E1814; --ink-m:#3E342C; --ink-l:#7A6A60;
   --white:#FAFAF7;
-  /* iOS-safe viewport height */
-  --vh:100svh;
+  /* iOS-safe viewport height — set by JS */
+  --vh: 100vh;
 }
 
-html{scroll-behavior:smooth;}
-body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);overflow-x:hidden;background:var(--ink);}
+html{scroll-behavior:smooth;overscroll-behavior:none;}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);overflow-x:hidden;
+  /* Match hero bg so iOS overscroll bounce shows the right colour, not a black flash */
+  background:var(--ink);
+  overscroll-behavior:none;
+}
 
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;justify-content:space-between;align-items:center;
   padding:24px 52px;
+  background:transparent;
   transition:background .35s,padding .35s;
 }
 nav.scrolled{
@@ -55,86 +60,58 @@ nav.scrolled{
   transition:opacity .4s;
 }
 
-/* ════════════════════════════════════
-   WIPE TRANSITION SYSTEM
-   
-   Each section (except hero) has a .wp div
-   that covers it completely at start.
-   IntersectionObserver adds .in when section
-   enters viewport → panel slides up, content fades in.
-   Removing .in when section leaves → instant reset.
-   
-   CONTENT IS ALWAYS VISIBLE IN CSS.
-   .wp only hides when JS has confirmed it's loaded.
-   body.js-ready activates the hiding.
-   ════════════════════════════════════ */
-
-/* Wipe panel — only active after JS loads */
-.wp{
-  position:absolute;inset:0;z-index:40;
-  pointer-events:none;
-  clip-path:inset(0 0 0 0); /* contain within section bounds */
-}
-/* Before JS: panel is transparent (content always visible) */
-body.js .wp{
-  transform:translateY(0%);
-  transition:transform .9s cubic-bezier(.77,0,.18,1);
-}
-body.js section.in .wp{transform:translateY(-105%);}
-body.js section.out .wp{transform:translateY(0%);transition:none;}
-
-/* Wipe colours — match previous section bg */
-#commercial .wp{background:var(--ink);}
-#narrative  .wp{background:var(--paper-d);}
-#about      .wp{background:var(--paper-d);}
-#contact    .wp{background:var(--blush);}
-
-/* Content reveal */
-.tr{opacity:1;transform:none;} /* visible by default */
-body.js .tr{opacity:0;transform:translateY(22px);transition:none;}
-body.js section.in .tr{
-  opacity:1;transform:translateY(0);
-  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
-}
-body.js section.in .tr.d0{transition-delay:.2s;}
-body.js section.in .tr.d1{transition-delay:.32s;}
-body.js section.in .tr.d2{transition-delay:.44s;}
-body.js section.in .tr.d3{transition-delay:.56s;}
-body.js section.in .tr.d4{transition-delay:.68s;}
-
-/* Tile stagger */
-body.js .wi.tr{opacity:0;transform:translateY(18px);}
-body.js section.in .wi.tr{opacity:1;transform:translateY(0);transition:opacity .55s ease,transform .55s cubic-bezier(.16,1,.3,1);}
-body.js section.in .wi.tr:nth-child(1){transition-delay:.25s}
-body.js section.in .wi.tr:nth-child(2){transition-delay:.32s}
-body.js section.in .wi.tr:nth-child(3){transition-delay:.39s}
-body.js section.in .wi.tr:nth-child(4){transition-delay:.46s}
-body.js section.in .wi.tr:nth-child(5){transition-delay:.53s}
-body.js section.in .wi.tr:nth-child(6){transition-delay:.60s}
-body.js section.in .wi.tr:nth-child(7){transition-delay:.67s}
-body.js section.in .wi.tr:nth-child(8){transition-delay:.74s}
-body.js section.in .wi.tr:nth-child(9){transition-delay:.81s}
-
-/* Accolade stagger */
-body.js .acc-item.tr{opacity:0;transform:translateX(18px);}
-body.js section.in .acc-item.tr{opacity:1;transform:translateX(0);transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1);}
-body.js section.in .acc-item.tr:nth-child(1){transition-delay:.35s}
-body.js section.in .acc-item.tr:nth-child(2){transition-delay:.43s}
-body.js section.in .acc-item.tr:nth-child(3){transition-delay:.51s}
-body.js section.in .acc-item.tr:nth-child(4){transition-delay:.59s}
-body.js section.in .acc-item.tr:nth-child(5){transition-delay:.67s}
-body.js section.in .acc-item.tr:nth-child(6){transition-delay:.75s}
-body.js section.in .acc-item.tr:nth-child(7){transition-delay:.83s}
-body.js section.in .acc-item.tr:nth-child(8){transition-delay:.91s}
-body.js section.in .acc-item.tr:nth-child(9){transition-delay:.99s}
-
 /* ── SECTIONS ── */
 section{position:relative;}
-
-/* Bottom padding creates scroll dwell between sections */
 section{padding-bottom:50vh;}
 #hero{padding-bottom:0;}
 #contact{padding-bottom:80px;}
+
+/* ── SCROLL ANIMATIONS ──
+   Content is ALWAYS visible by default.
+   When section enters viewport, .in class adds
+   a smooth transition. No hiding, no flash. */
+
+/* Sections slide up slightly on enter */
+#commercial,#narrative,#about,#contact {
+  transition: opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1);
+  opacity: 0.3;
+  transform: translateY(30px);
+}
+#commercial.in,#narrative.in,#about.in,#contact.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Individual elements stagger inside revealed section */
+.tr { transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+section.in .tr.d0 { transition-delay: .1s; }
+section.in .tr.d1 { transition-delay: .22s; }
+section.in .tr.d2 { transition-delay: .34s; }
+section.in .tr.d3 { transition-delay: .46s; }
+section.in .tr.d4 { transition-delay: .58s; }
+
+/* Work tile stagger */
+section.in .wi.tr:nth-child(1){transition-delay:.15s}
+section.in .wi.tr:nth-child(2){transition-delay:.22s}
+section.in .wi.tr:nth-child(3){transition-delay:.29s}
+section.in .wi.tr:nth-child(4){transition-delay:.36s}
+section.in .wi.tr:nth-child(5){transition-delay:.43s}
+section.in .wi.tr:nth-child(6){transition-delay:.50s}
+section.in .wi.tr:nth-child(7){transition-delay:.57s}
+section.in .wi.tr:nth-child(8){transition-delay:.64s}
+section.in .wi.tr:nth-child(9){transition-delay:.71s}
+
+/* Accolade stagger */
+section.in .acc-item.tr:nth-child(1){transition-delay:.3s}
+section.in .acc-item.tr:nth-child(2){transition-delay:.38s}
+section.in .acc-item.tr:nth-child(3){transition-delay:.46s}
+section.in .acc-item.tr:nth-child(4){transition-delay:.54s}
+section.in .acc-item.tr:nth-child(5){transition-delay:.62s}
+section.in .acc-item.tr:nth-child(6){transition-delay:.70s}
+section.in .acc-item.tr:nth-child(7){transition-delay:.78s}
+section.in .acc-item.tr:nth-child(8){transition-delay:.86s}
+section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
+
 
 /* ── HERO ── */
 #hero{
@@ -327,7 +304,6 @@ section{padding-bottom:50vh;}
 
 <!-- COMMERCIAL -->
 <section id="commercial">
-  <div class="wp"></div>
   <div class="work-blobs"><div class="wb wb1"></div><div class="wb wb2"></div></div>
   <div class="sec-sticky">
     <h2 class="sec-h tr d0" id="hc">Commercial <em>Work</em></h2>
@@ -385,7 +361,6 @@ section{padding-bottom:50vh;}
 
 <!-- NARRATIVE -->
 <section id="narrative">
-  <div class="wp"></div>
   <div class="sec-sticky">
     <h2 class="sec-h tr d0" id="hn">Narrative <em>Work</em></h2>
   </div>
@@ -432,7 +407,6 @@ section{padding-bottom:50vh;}
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="wp"></div>
   <div class="about-deco">"</div>
   <div style="position:relative;z-index:2">
     <span class="aqm tr d0">"</span>
@@ -461,7 +435,6 @@ section{padding-bottom:50vh;}
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="wp"></div>
   <div class="cc-bg"><div class="cc cc1"></div><div class="cc cc2"></div></div>
   <div class="c-deco">Hello</div>
   <p class="c-eye tr d0">Representation &amp; Enquiries</p>
@@ -470,21 +443,21 @@ section{padding-bottom:50vh;}
     <div>
       <p class="rep-co">The Den Editorial <span class="rep-region">US</span></p>
       <div class="rep-list">
-        <div class="rep-row"><span class="rep-name">Jennifer Mersis</span><span class="rep-role">Senior EP</span><a href="tel:+13109902883" class="rep-link">+1 (310) 990 2883</a><a href="mailto:jennifer@thedenedit.com" class="rep-link">jennifer@thedenedit.com</a><a href="https://thedeneditorial.com" target="_blank" class="rep-link rep-web">thedeneditorial.com ↗</a></div>
-        <div class="rep-row"><span class="rep-name">Rána Martin</span><span class="rep-role">EP — Los Angeles</span><a href="tel:+16462817338" class="rep-link">+1 (646) 281 7338</a><a href="mailto:rana@thedenedit.com" class="rep-link">rana@thedenedit.com</a></div>
-        <div class="rep-row"><span class="rep-name">Laurenn Reed</span><span class="rep-role">EP — New York</span><a href="tel:+13478347574" class="rep-link">+1 (347) 834 7574</a><a href="mailto:laurenn@thedenedit.com" class="rep-link">laurenn@thedenedit.com</a></div>
+        <div class="rep-row"><span class="rep-name">Jennifer Mersis</span><span class="rep-role">Senior EP</span><a href="tel:+13109902883" class="rep-link">+1 (310) 990 2883</a><a href="/cdn-cgi/l/email-protection#c2a8a7acacaba4a7b082b6aaa7a6a7aca7a6abb6eca1adaf" class="rep-link"><span class="__cf_email__" data-cfemail="f298979c9c9b949780b2869a9796979c97969b86dc919d9f">[email&#160;protected]</span></a><a href="https://thedeneditorial.com" target="_blank" class="rep-link rep-web">thedeneditorial.com ↗</a></div>
+        <div class="rep-row"><span class="rep-name">Rána Martin</span><span class="rep-role">EP — Los Angeles</span><a href="tel:+16462817338" class="rep-link">+1 (646) 281 7338</a><a href="/cdn-cgi/l/email-protection#dcaebdb2bd9ca8b4b9b8b9b2b9b8b5a8f2bfb3b1" class="rep-link"><span class="__cf_email__" data-cfemail="3042515e517044585554555e555459441e535f5d">[email&#160;protected]</span></a></div>
+        <div class="rep-row"><span class="rep-name">Laurenn Reed</span><span class="rep-role">EP — New York</span><a href="tel:+13478347574" class="rep-link">+1 (347) 834 7574</a><a href="/cdn-cgi/l/email-protection#563a37232433383816223e3332333833323f227835393b" class="rep-link"><span class="__cf_email__" data-cfemail="026e637770676c6c42766a6766676c67666b762c616d6f">[email&#160;protected]</span></a></div>
       </div>
     </div>
     <div>
       <p class="rep-co">The Editors <span class="rep-region">Australia</span></p>
       <div class="rep-list">
-        <div class="rep-row"><span class="rep-name">Nicoletta Rousianos</span><span class="rep-role">Managing Director</span><a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a><a href="mailto:nicoletta@theeditors.com.au" class="rep-link">nicoletta@theeditors.com.au</a><a href="http://www.theeditors.com.au" target="_blank" class="rep-link rep-web">theeditors.com.au ↗</a></div>
-        <div class="rep-row"><span class="rep-name">Rita Gagliardi</span><span class="rep-role">EP — Sydney</span><a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a><a href="mailto:rita@theeditors.com.au" class="rep-link">rita@theeditors.com.au</a></div>
-        <div class="rep-row"><span class="rep-name">Charlotte Griffiths</span><span class="rep-role">EP — Melbourne</span><a href="tel:+61391883687" class="rep-link">+61 (0)3 9188 3687</a><a href="mailto:charlotte@theeditors.com.au" class="rep-link">charlotte@theeditors.com.au</a></div>
+        <div class="rep-row"><span class="rep-name">Nicoletta Rousianos</span><span class="rep-role">Managing Director</span><a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a><a href="/cdn-cgi/l/email-protection#a7c9cec4c8cbc2d3d3c6e7d3cfc2c2c3ced3c8d5d489c4c8ca89c6d2" class="rep-link"><span class="__cf_email__" data-cfemail="7e10171d11121b0a0a1f3e0a161b1b1a170a110c0d501d1113501f0b">[email&#160;protected]</span></a><a href="http://www.theeditors.com.au" target="_blank" class="rep-link rep-web">theeditors.com.au ↗</a></div>
+        <div class="rep-row"><span class="rep-name">Rita Gagliardi</span><span class="rep-role">EP — Sydney</span><a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a><a href="/cdn-cgi/l/email-protection#a1d3c8d5c0e1d5c9c4c4c5c8d5ced3d28fc2cecc8fc0d4" class="rep-link"><span class="__cf_email__" data-cfemail="f88a918c99b88c909d9d9c918c978a8bd69b9795d6998d">[email&#160;protected]</span></a></div>
+        <div class="rep-row"><span class="rep-name">Charlotte Griffiths</span><span class="rep-role">EP — Melbourne</span><a href="tel:+61391883687" class="rep-link">+61 (0)3 9188 3687</a><a href="/cdn-cgi/l/email-protection#b8dbd0d9cad4d7ccccddf8ccd0dddddcd1ccd7cacb96dbd7d596d9cd" class="rep-link"><span class="__cf_email__" data-cfemail="d2b1bab3a0bebda6a6b792a6bab7b7b6bba6bda0a1fcb1bdbffcb3a7">[email&#160;protected]</span></a></div>
       </div>
     </div>
   </div>
-  <div class="direct tr d3"><p class="direct-lbl">All other enquiries</p><a href="mailto:jessica.mutascio@gmail.com" class="c-email">jessica.mutascio@gmail.com</a></div>
+  <div class="direct tr d3"><p class="direct-lbl">All other enquiries</p><a href="/cdn-cgi/l/email-protection#d7bdb2a4a4beb4b6f9baa2a3b6a4b4beb897b0bab6bebbf9b4b8ba" class="c-email"><span class="__cf_email__" data-cfemail="fd97988e8e949e9cd39088899c8e9e9492bd9a909c9491d39e9290">[email&#160;protected]</span></a></div>
   <p class="c-loc tr d4">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
   <div class="c-foot"><p>© 2024 Jessica Mutascio</p><p>Editor</p></div>
 </section>
@@ -497,9 +470,17 @@ section{padding-bottom:50vh;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── iOS safe viewport height fix ──
+// On iPhone, 100vh includes the browser chrome causing overflow.
+// We measure the actual visible height and set it as --vh.
+function setVh() {
+  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
+}
+setVh();
+window.addEventListener('resize', setVh);
+
 // ── Mark JS active (enables hiding/reveal CSS) ──
-document.body.classList.add('js');
 
 const nav   = document.getElementById('nav');
 const prog  = document.getElementById('prog');
@@ -554,36 +535,4 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 
-wipeSections.forEach(s => io.observe(s));
-
-// ── Smooth nav links ──
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); }
-  });
-});
-
-// ── Tiles → modal ──
-document.querySelectorAll('.wi[data-vimeo]').forEach(el => {
-  el.addEventListener('click', () => {
-    const id = el.dataset.vimeo;
-    if (id && !id.startsWith('VIMEO_')) openM(id);
-  });
-});
-
-function openM(id) {
-  document.getElementById('modal').classList.add('open');
-  document.getElementById('mif').src = `https://player.vimeo.com/video/${id}?autoplay=1&color=6b9e8a&title=0&byline=0&portrait=0`;
-}
-function closeM(e) {
-  if (e && e.target !== document.getElementById('modal') && !e.target.classList.contains('modal-x')) return;
-  document.getElementById('modal').classList.remove('open');
-  document.getElementById('mif').src = '';
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeM({ target:document.getElementById('modal') });
-});
-</script>
-</body>
-</html>
+wipeSections.forEach(s => io.o
