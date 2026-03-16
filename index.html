@@ -33,13 +33,14 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;justify-content:space-between;align-items:center;
   padding:24px 52px;
-  background:rgba(30,24,20,.93);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(107,158,138,.12);
-  transition:padding .35s;
+  background:transparent;
+  transition:background .5s,padding .35s;
 }
 nav.scrolled{
   padding:14px 52px;
+  background:rgba(30,24,20,.93);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(107,158,138,.12);
 }
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;}
 .nav-links{display:flex;gap:28px;list-style:none;}
@@ -150,8 +151,10 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 #commercial{background:var(--paper-d);padding-top:80px;}
 .work-blobs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .wb{position:absolute;border-radius:50%;filter:blur(90px);}
-.wb1{width:500px;height:400px;top:-80px;right:-100px;background:rgba(196,120,74,.14);}
-.wb2{width:350px;height:350px;bottom:50px;left:-60px;background:rgba(232,168,152,.1);}
+/* Boosted blobs for more warmth in commercial */
+.wb1{width:700px;height:600px;top:-100px;right:-80px;background:rgba(196,120,74,.38);}
+.wb2{width:500px;height:500px;bottom:0;left:-80px;background:rgba(232,168,152,.32);}
+.wb3{width:300px;height:300px;top:40%;right:30%;background:rgba(232,213,160,.18);}
 #commercial .sec-sticky{background:rgba(237,228,212,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(62,52,44,.07);}
 #commercial .sec-h{color:var(--ink);}
 #commercial .sec-h em{font-style:italic;color:var(--clay);}
@@ -161,6 +164,10 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 #narrative .sec-sticky{background:rgba(30,24,20,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(107,158,138,.08);}
 #narrative .sec-h{color:var(--white);}
 #narrative .sec-h em{font-style:italic;color:var(--sage-p);}
+
+
+
+
 
 /* ── GRID ── */
 .sec-body{padding:0 52px 0;}
@@ -183,13 +190,24 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 .wi-btn:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4);}
 .wi-btn svg{width:8px;height:8px;fill:currentColor;}
 
+/* ── ABOUT sticky heading ── */
+#about .sec-sticky{background:rgba(232,168,152,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,107,90,.15);}
+#about .sec-h{color:var(--ink);}
+#about .sec-h em{font-style:italic;color:var(--blush-d);}
+
+/* ── CONTACT sticky heading ── */
+#contact .sec-sticky{background:rgba(61,107,88,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(107,158,138,.2);}
+#contact .sec-h{color:var(--white);}
+#contact .sec-h em{font-style:italic;color:var(--straw);}
+
 /* ── ABOUT ── */
 #about{
   min-height:var(--vh);background:var(--blush);
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:64px;padding:100px 52px;
+  display:flex;flex-direction:column;
+  gap:0;padding:0 52px 100px;
   position:relative;
 }
+.about-inner{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:64px;padding-top:32px;}
 .about-deco{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:38rem;line-height:.75;font-weight:300;color:rgba(201,107,90,.08);top:-80px;left:-30px;pointer-events:none;user-select:none;overflow:hidden;max-width:100%;}
 .aqm{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:300;color:var(--blush-d);line-height:1;margin-bottom:-12px;display:block;}
 .about-q{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.2vw,2rem);font-weight:300;font-style:italic;line-height:1.44;color:var(--ink);margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid rgba(201,107,90,.28);position:relative;z-index:1;}
@@ -205,9 +223,10 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 /* ── CONTACT ── */
 #contact{
   min-height:var(--vh);background:var(--sage);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:100px 52px 80px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:0 52px 80px;position:relative;overflow:hidden;
 }
+.contact-inner{display:flex;flex-direction:column;justify-content:center;flex:1;padding-top:32px;}
 .cc-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .cc{position:absolute;border-radius:50%;filter:blur(70px);}
 .cc1{width:500px;height:500px;right:-150px;top:-100px;background:rgba(61,107,88,.45);}
@@ -254,7 +273,7 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
   .h-hint{left:22px;}
   .sec-sticky{padding:16px 22px 12px;}
   .sec-body{padding:0 22px 0;}
-  #about{grid-template-columns:1fr;padding:60px 22px;gap:32px;}
+  #about{padding:0 22px 60px;} #about .about-inner{grid-template-columns:1fr;gap:32px;} #contact .contact-inner{padding-top:24px;}
   #contact{padding:80px 22px 60px;}
   .rep-grid{grid-template-columns:1fr;gap:28px;}
   .wgrid{grid-template-columns:1fr;}
@@ -400,7 +419,11 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 
 <!-- ABOUT -->
 <section id="about">
+  <div class="sec-sticky">
+    <h2 class="sec-h" id="ha">About <em>Jessica</em></h2>
+  </div>
   <div class="about-deco">"</div>
+  <div class="about-inner">
   <div style="position:relative;z-index:2">
     <span class="aqm tr d0">"</span>
     <p class="about-q tr d1">I never made one of my discoveries through a process of rational thinking.<cite>— Albert Einstein</cite></p>
@@ -424,14 +447,18 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
       <li class="acc-item tr"><span class="acc-aw">London International Award — Best New Director, Silver</span><span class="acc-pr">"Backpedal"</span></li>
     </ul>
   </div>
+  </div><!-- /about-inner -->
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="cc-bg"><div class="cc cc1"></div><div class="cc cc2"></div></div>
   <div class="c-deco">Hello</div>
+  <div class="sec-sticky">
+    <h2 class="sec-h" id="hct">Get In <em>Touch</em></h2>
+  </div>
+  <div class="contact-inner">
   <p class="c-eye tr d0">Representation &amp; Enquiries</p>
-  <h2 class="c-ttl tr d1">Get<br>In Touch</h2>
   <div class="rep-grid tr d2">
     <div>
       <p class="rep-co">The Den Editorial <span class="rep-region">US</span></p>
@@ -453,6 +480,7 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
   <div class="direct tr d3"><p class="direct-lbl">All other enquiries</p><a href="/cdn-cgi/l/email-protection#d7bdb2a4a4beb4b6f9baa2a3b6a4b4beb897b0bab6bebbf9b4b8ba" class="c-email"><span class="__cf_email__" data-cfemail="fd97988e8e949e9cd39088899c8e9e9492bd9a909c9491d39e9290">[email&#160;protected]</span></a></div>
   <p class="c-loc tr d4">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
   <div class="c-foot"><p>© 2024 Jessica Mutascio</p><p>Editor</p></div>
+  </div><!-- /contact-inner -->
 </section>
 
 <!-- MODAL -->
