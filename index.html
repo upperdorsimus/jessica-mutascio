@@ -24,7 +24,12 @@
   --ink-light:  #7A6A60;
   --white:      #FAFAF7;
 }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* proximity: snaps when you're close to a section boundary,
+     but doesn't trap you inside tall sections */
+  scroll-snap-type: y proximity;
+}
 body { font-family:'Jost',sans-serif; font-weight:300; color:var(--ink); overflow-x:hidden; }
 
 /* ── NAV ── */
@@ -69,8 +74,32 @@ nav.dark .nav-links a:hover, nav.green .nav-links a:hover { color:var(--straw); 
 /* progress */
 #prog { position:fixed; top:0; left:0; height:2px; background:var(--straw); z-index:1000; width:0%; }
 
+/* Scroll spacers — invisible pause points between sections.
+   They act as snap targets so scrolling takes an extra beat
+   between each section transition. Coloured to match the
+   section they follow so they're visually seamless. */
+.scroll-spacer {
+  height: 50vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  pointer-events: none;
+  position: relative;
+  z-index: 0;
+}
+@media(max-width:860px){
+  /* On mobile, reduce dwell */
+  .scroll-spacer { height: 20vh; }
+}
+
 /* ════ SECTIONS ════ */
-section { position:relative; }
+section { position: relative; }
+
+/* Snap on hero, about, contact only — commercial/narrative are tall grids */
+#hero, #about, #contact {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+#commercial, #narrative { scroll-snap-align: none; }
 
 /* ── WIPE SYSTEM ──
    .wipe-panel covers the section by default.
@@ -89,7 +118,7 @@ section { position:relative; }
 section.wipe-done .wipe-panel { transform:translateY(-105%); }
 section.wipe-reset .wipe-panel { transition:none; transform:translateY(0%); }
 
-/* Curtain colour = previous section's bg */
+}
 #commercial .wipe-panel { background:var(--ink); }
 #narrative  .wipe-panel { background:var(--paper-dark); }
 #about      .wipe-panel { background:var(--paper-dark); }
@@ -323,6 +352,9 @@ section.wipe-done .acc-item.tr:nth-child(9){transition-delay:1.04s}
   </div>
 </section>
 
+<!-- scroll spacer: hero → commercial -->
+<div class="scroll-spacer" style="background:var(--ink)"></div>
+
 <!-- ════ COMMERCIAL ════ -->
 <section id="commercial" class="work-section">
   <div class="wipe-panel"></div>
@@ -382,6 +414,9 @@ section.wipe-done .acc-item.tr:nth-child(9){transition-delay:1.04s}
   </div><!-- /section-inner commercial -->
 </section>
 
+<!-- scroll spacer: commercial → narrative -->
+<div class="scroll-spacer" style="background:var(--paper-dark)"></div>
+
 <!-- ════ NARRATIVE ════ -->
 <section id="narrative" class="work-section-alt">
   <div class="wipe-panel"></div>
@@ -429,6 +464,9 @@ section.wipe-done .acc-item.tr:nth-child(9){transition-delay:1.04s}
   </div>
 </section>
 
+<!-- scroll spacer: narrative → about -->
+<div class="scroll-spacer" style="background:var(--ink)"></div>
+
 <!-- ════ ABOUT ════ -->
 <section id="about">
   <div class="wipe-panel"></div>
@@ -457,6 +495,9 @@ section.wipe-done .acc-item.tr:nth-child(9){transition-delay:1.04s}
     </ul>
   </div>
 </section>
+
+<!-- scroll spacer: about → contact -->
+<div class="scroll-spacer" style="background:var(--blush)"></div>
 
 <!-- ════ CONTACT ════ -->
 <section id="contact">
