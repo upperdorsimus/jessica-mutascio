@@ -6,7 +6,7 @@
 <title>Jessica Mutascio — Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -50,21 +50,28 @@ nav.dark .nav-links a:hover, nav.green .nav-links a:hover { color:var(--straw); 
 section { position:relative; overflow:hidden; }
 
 /* ── HERO ── */
-#hero { min-height:100vh; background:var(--sage); display:flex; flex-direction:column; justify-content:center; padding:120px 56px 80px; }
+#hero { min-height:100vh; background:var(--ink); display:flex; flex-direction:column; justify-content:center; padding:120px 56px 80px; }
 .hero-orbs { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
-.orb { position:absolute; border-radius:50%; filter:blur(80px); will-change:transform; }
-.orb1 { width:600px; height:500px; top:-100px;  right:-80px;  background:rgba(61,107,88,.6); }
-.orb2 { width:400px; height:400px; bottom:-60px; left:-80px;  background:rgba(107,158,138,.5); }
-.orb3 { width:280px; height:280px; bottom:120px; right:220px; background:rgba(232,213,160,.22); }
+.orb { position:absolute; border-radius:50%; filter:blur(100px); will-change:transform; }
+.orb1 { width:700px; height:600px; top:-150px; right:-120px; background:rgba(61,107,88,0.35); }
+.orb2 { width:500px; height:500px; bottom:-80px; left:-100px; background:rgba(107,158,138,0.2); }
+.orb3 { width:300px; height:300px; bottom:160px; right:280px; background:rgba(196,120,74,0.18); }
 .hero-content { position:relative; z-index:2; }
-.h-eye  { font-size:.62rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(245,239,228,.7); margin-bottom:20px; opacity:0; animation:up .9s ease .3s forwards; }
-.h-name { font-family:'DM Serif Display',serif; font-size:clamp(4.5rem,11vw,10rem); font-weight:400; line-height:.93; color:var(--white); margin-bottom:36px; opacity:0; animation:up 1s ease .5s forwards; }
+.h-eye  { font-size:.62rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase; color:rgba(245,239,228,.5); margin-bottom:22px; opacity:0; animation:up .9s ease .3s forwards; }
+.h-name {
+  font-family: 'Italiana', serif;
+  font-size: clamp(5rem, 13vw, 12rem);
+  font-weight: 400; line-height: 0.9;
+  color: var(--white); margin-bottom: 36px;
+  letter-spacing: 0.02em;
+  opacity:0; animation:up 1s ease .5s forwards;
+}
 .h-name em { font-style:italic; color:var(--straw); }
-.h-sub  { font-size:.72rem; font-weight:400; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,239,228,.6); line-height:2.2; opacity:0; animation:up 1s ease .7s forwards; }
+.h-sub  { font-size:.72rem; font-weight:400; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,239,228,.45); line-height:2.2; opacity:0; animation:up 1s ease .7s forwards; }
 .h-hint { position:absolute; bottom:44px; left:56px; display:flex; align-items:center; gap:12px; opacity:0; animation:fadein 1s ease 1.4s forwards; }
-.h-hint span { font-size:.57rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,239,228,.6); }
+.h-hint span { font-size:.57rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,239,228,.4); }
 .bdots { display:flex; gap:5px; }
-.bd { width:5px; height:5px; border-radius:50%; background:rgba(245,239,228,.6); animation:blink 1.5s ease infinite; }
+.bd { width:5px; height:5px; border-radius:50%; background:rgba(245,239,228,.4); animation:blink 1.5s ease infinite; }
 .bd:nth-child(2){animation-delay:.22s}.bd:nth-child(3){animation-delay:.44s}
 
 /* ── SECTION TABS (work category nav) ── */
@@ -137,7 +144,7 @@ section { position:relative; overflow:hidden; }
 .acc-pr { font-size:.57rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--blush-deep); opacity:.75; margin-top:2px; display:block; }
 
 /* ── CONTACT ── */
-#contact { min-height:100vh; background:var(--sage); display:flex; flex-direction:column; justify-content:center; padding:80px 56px; overflow:hidden; }
+#contact { min-height:130vh; background:var(--sage); display:flex; flex-direction:column; justify-content:center; padding:100px 56px 80px; overflow:hidden; }
 .contact-circles { position:absolute; inset:0; pointer-events:none; overflow:hidden; will-change:transform; }
 .cc { position:absolute; border-radius:50%; filter:blur(70px); }
 .cc1 { width:500px; height:500px; right:-150px; top:-100px; background:rgba(61,107,88,.45); }
@@ -151,6 +158,26 @@ section { position:relative; overflow:hidden; }
 .c-loc  { font-size:.6rem; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:rgba(245,239,228,.48); position:relative; z-index:2; }
 .c-foot { position:absolute; bottom:0; left:0; right:0; padding:16px 56px; border-top:1px solid rgba(245,239,228,.1); display:flex; justify-content:space-between; z-index:2; }
 .c-foot p { font-size:.56rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(245,239,228,.28); font-weight:400; }
+
+/* Representation grid */
+.rep-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:48px; position:relative; z-index:2; }
+.rep-block { }
+.rep-co { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--white); margin-bottom:20px; display:flex; align-items:baseline; gap:10px; }
+.rep-region { font-size:.56rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--sage-pale); opacity:.7; }
+.rep-list { display:flex; flex-direction:column; gap:16px; }
+.rep-row { padding-bottom:16px; border-bottom:1px solid rgba(245,239,228,.08); display:flex; flex-direction:column; gap:4px; }
+.rep-name { font-size:.78rem; font-weight:500; letter-spacing:.06em; color:var(--straw); text-transform:none; }
+.rep-role { font-size:.6rem; font-weight:400; letter-spacing:.14em; text-transform:uppercase; color:rgba(245,239,228,.4); }
+.rep-link { font-size:.68rem; font-weight:300; color:rgba(245,239,228,.6); text-decoration:none; transition:color .2s; letter-spacing:.02em; }
+.rep-link:hover { color:var(--white); }
+.rep-web { color:var(--sage-pale); opacity:.75; }
+.rep-web:hover { opacity:1; color:var(--sage-pale); }
+.direct-contact { position:relative; z-index:2; margin-bottom:24px; }
+.rep-direct-label { font-size:.58rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(245,239,228,.4); margin-bottom:10px; }
+
+@media(max-width:860px){
+  .rep-grid { grid-template-columns:1fr; gap:32px; }
+}
 
 /* ── MODAL ── */
 .modal-bg { position:fixed; inset:0; background:rgba(12,10,8,.96); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; }
@@ -178,22 +205,85 @@ section { position:relative; overflow:hidden; }
   position: relative;
   overflow: hidden;
 }
-/* The curtain panel — sits above everything, slides up on scroll */
+
+/* The curtain panel — sits above everything, driven by JS */
 .wipe-panel {
   position: absolute;
   inset: 0;
   z-index: 50;
   pointer-events: none;
   will-change: transform;
-  /* starts fully covering — JS sets translateY each frame */
   transform: translateY(0%);
 }
-/* Colour per section — matches bg of previous section */
-#reel    .wipe-panel { background: var(--sage); }
+
+/* Curtain colours — matches the section above */
+#reel       .wipe-panel { background: var(--ink); }
 #commercial .wipe-panel { background: var(--ink); }
 #narrative  .wipe-panel { background: var(--paper-dark); }
 #about      .wipe-panel { background: var(--paper-dark); }
 #contact    .wipe-panel { background: var(--blush); }
+
+/* ═══════════════════════════════
+   TEXT REVEAL ANIMATIONS
+   Elements with .t-reveal start hidden.
+   When their parent section gets .revealed class,
+   they animate in with staggered delays.
+   ═══════════════════════════════ */
+.t-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.wipe-wrap.revealed .t-reveal { opacity: 1; transform: translateY(0); }
+
+/* Stagger delays */
+.t-reveal:nth-child(1) { transition-delay: 0.05s; }
+.t-reveal:nth-child(2) { transition-delay: 0.15s; }
+.t-reveal:nth-child(3) { transition-delay: 0.25s; }
+.t-reveal:nth-child(4) { transition-delay: 0.35s; }
+.t-reveal:nth-child(5) { transition-delay: 0.45s; }
+
+/* Specific element delays */
+.t-reveal.d0 { transition-delay: 0.1s; }
+.t-reveal.d1 { transition-delay: 0.2s; }
+.t-reveal.d2 { transition-delay: 0.32s; }
+.t-reveal.d3 { transition-delay: 0.44s; }
+.t-reveal.d4 { transition-delay: 0.56s; }
+.t-reveal.d5 { transition-delay: 0.68s; }
+
+/* Slide in from left */
+.t-reveal.from-left { transform: translateX(-32px); }
+.wipe-wrap.revealed .t-reveal.from-left { transform: translateX(0); }
+
+/* Work tiles cascade */
+.wi.t-reveal { transform: translateY(24px); }
+.wipe-wrap.revealed .wi.t-reveal { opacity: 1; transform: translateY(0); }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(1) { transition-delay: 0.3s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(2) { transition-delay: 0.38s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(3) { transition-delay: 0.46s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(4) { transition-delay: 0.54s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(5) { transition-delay: 0.62s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(6) { transition-delay: 0.70s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(7) { transition-delay: 0.78s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(8) { transition-delay: 0.86s; }
+.wipe-wrap.revealed .wi.t-reveal:nth-child(9) { transition-delay: 0.94s; }
+
+/* Accolade slide from right */
+.acc-item.t-reveal { transform: translateX(24px); }
+.wipe-wrap.revealed .acc-item.t-reveal { opacity: 1; transform: translateX(0); }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(1) { transition-delay: 0.35s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(2) { transition-delay: 0.44s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(3) { transition-delay: 0.53s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(4) { transition-delay: 0.62s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(5) { transition-delay: 0.71s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(6) { transition-delay: 0.80s; }
+.wipe-wrap.revealed .acc-item.t-reveal:nth-child(7) { transition-delay: 0.89s; }
+
+/* Reset all reveals instantly when section un-reveals */
+.wipe-wrap:not(.revealed) .t-reveal {
+  transition: none !important;
+}
 
 /* ── KEYFRAMES ── */
 @keyframes up     { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
@@ -221,7 +311,7 @@ section { position:relative; overflow:hidden; }
 
 <div id="prog"></div>
 
-<nav id="nav" class="green">
+<nav id="nav" class="dark">
   <a class="logo" href="#hero">Jessica Mutascio</a>
   <ul class="nav-links">
     <li><a href="#reel">Reel</a></li>
@@ -255,13 +345,13 @@ section { position:relative; overflow:hidden; }
   <div class="wipe-panel"></div>
   <div class="reel-glow"></div>
   <div class="reel-bg-word" id="reelWord">Reel</div>
-  <p class="sec-lbl">Showreel</p>
-  <div class="reel-embed">
+  <p class="sec-lbl t-reveal d0">Showreel</p>
+  <div class="reel-embed t-reveal d1">
     <!-- Replace VIMEO_SHOWREEL_ID with the numeric Vimeo ID -->
     <iframe src="https://player.vimeo.com/video/VIMEO_SHOWREEL_ID?color=6b9e8a&title=0&byline=0&portrait=0"
       allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
-  <p class="reel-cap">Editor's Showreel — 2024</p>
+  <p class="reel-cap t-reveal d2">Editor's Showreel — 2024</p>
 </section>
 
 <!-- ════ COMMERCIAL ════ -->
@@ -271,58 +361,58 @@ section { position:relative; overflow:hidden; }
     <div class="wb wb1"></div><div class="wb wb2"></div>
   </div>
   <div class="section-inner">
-    <h2 class="section-heading">Commercial <em>Work</em></h2>
+    <h2 class="section-heading t-reveal d0">Commercial <em>Work</em></h2>
     <div class="wgrid" id="commercial-grid">
 
-      <div class="wi w" data-vimeo="VIMEO_BOA_ID">
+      <div class="wi w t-reveal" data-vimeo="VIMEO_BOA_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#3a3028,#24201c)"><span style="font-size:3.5rem">Bank of America</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">Bank of America</p><p class="wi-cr">Dir. Mark Albiston · The Sweet Shop · Hill Holliday</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BOA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Bank of America</p><p class="wi-ty">"Journey" · Commercial</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_LINCOLN_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_LINCOLN_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#202838,#141c28)"><span style="font-size:2rem">Lincoln</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">Lincoln</p><p class="wi-cr">Dir. Jake Scott · RSA Films · Hudson Rouge</p><a href="#" class="wi-btn" onclick="openM('VIMEO_LINCOLN_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Lincoln</p><p class="wi-ty">"Where Does The Stress Go?"</p></div>
       </div>
 
-      <div class="wi w" data-vimeo="VIMEO_CAREFREE_ID">
+      <div class="wi w t-reveal" data-vimeo="VIMEO_CAREFREE_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#382030,#241420)"><span style="font-size:3.5rem">Carefree</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial · Spikes Asia Glass Award</p><p class="wi-cl">Carefree</p><p class="wi-cr">Dir. Selina Miles · Exit Films · DDB Sydney</p><a href="#" class="wi-btn" onclick="openM('VIMEO_CAREFREE_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Carefree</p><p class="wi-ty">"The Matriarchs" · Glass Award</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_SOUTHERNCROSS_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_SOUTHERNCROSS_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#2c3020,#1c2015)"><span style="font-size:2rem">Southern Cross</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">Southern Cross</p><p class="wi-cr">Dir. JH Beetge · Goodoil Films · Barnes Catmur</p><a href="#" class="wi-btn" onclick="openM('VIMEO_SOUTHERNCROSS_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Southern Cross</p><p class="wi-ty">"Advice to the Younger Me"</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_CENSUS_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_CENSUS_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#283040,#182028)"><span style="font-size:2rem">Census 2020</span></div>
         <div class="wi-hov"><p class="wi-ty">PSA</p><p class="wi-cl">Census 2020</p><p class="wi-cr">Dir. Olivier Gondry · Partizan · VMLY&amp;R</p><a href="#" class="wi-btn" onclick="openM('VIMEO_CENSUS_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Census 2020</p><p class="wi-ty">PSA · Dir. Olivier Gondry</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_MAHALIA_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_MAHALIA_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#2a2040,#1a1428)"><span style="font-size:2rem">Mahalia ft JoJo</span></div>
         <div class="wi-hov"><p class="wi-ty">Music Video</p><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-cr">Dir. Boma Iluma · Caviar · Exile Edit</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MAHALIA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Mahalia ft JoJo</p><p class="wi-ty">"Cheat" · Music Video</p></div>
       </div>
 
-      <div class="wi w" data-vimeo="VIMEO_BIKEEXCHANGE_ID">
+      <div class="wi w t-reveal" data-vimeo="VIMEO_BIKEEXCHANGE_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#203028,#141e18)"><span style="font-size:3.5rem">Bike Exchange</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">Bike Exchange</p><p class="wi-cr">Dir. Alexander Brown · The Sweet Shop · Saatchi &amp; Saatchi</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BIKEEXCHANGE_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Bike Exchange</p><p class="wi-ty">"Look At This Bike"</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_ATT_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_ATT_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#203040,#141e28)"><span style="font-size:2rem">AT&amp;T</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">AT&amp;T</p><p class="wi-cr">Dir. Lance Acord · Park Pictures · BBDO</p><a href="#" class="wi-btn" onclick="openM('VIMEO_ATT_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">AT&amp;T</p><p class="wi-ty">"Connect &amp; Play" · Commercial</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_IKEA_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_IKEA_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#2a2820,#1a1810)"><span style="font-size:2rem">IKEA</span></div>
         <div class="wi-hov"><p class="wi-ty">Commercial</p><p class="wi-cl">IKEA</p><p class="wi-cr">Dir. Olivier Gondry · Partizan · Ogilvy NY</p><a href="#" class="wi-btn" onclick="openM('VIMEO_IKEA_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">IKEA</p><p class="wi-ty">"Why We Make" · Commercial</p></div>
@@ -336,46 +426,46 @@ section { position:relative; overflow:hidden; }
 <section id="narrative" class="work-section-alt wipe-wrap">
   <div class="wipe-panel"></div>
   <div class="section-inner dark-tabs">
-    <h2 class="section-heading light">Narrative <em style="color:var(--sage)">Work</em></h2>
+    <h2 class="section-heading light t-reveal d0">Narrative <em style="color:var(--sage)">Work</em></h2>
     <div class="wgrid">
 
-      <div class="wi w" data-vimeo="VIMEO_BACKPEDAL_ID">
+      <div class="wi w t-reveal" data-vimeo="VIMEO_BACKPEDAL_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#3a2828,#241c1c)"><span style="font-size:3.5rem">Backpedal</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film · Multiple Award Winner</p><p class="wi-cl">Backpedal</p><p class="wi-cr">Dir. Dani Pearce · Finch · Flickerfest Best Editing · Cannes Gold</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BACKPEDAL_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Backpedal</p><p class="wi-ty">Short Film · Award Winner</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_CANARY_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_CANARY_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#302820,#201810)"><span style="font-size:2rem">Canary</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film (Trailer)</p><p class="wi-cl">Canary</p><p class="wi-cr">Dir. Chuck Vuolo · Official Selection: Boston Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_CANARY_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Canary</p><p class="wi-ty">Short Film (Trailer)</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_YOUNGKING_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_YOUNGKING_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#1e2c30,#141c20)"><span style="font-size:2rem">The Young King</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film (Teaser)</p><p class="wi-cl">The Young King</p><p class="wi-cr">Dir. Larin Sullivan · Trinket Films · Inside Out, Outfest</p><a href="#" class="wi-btn" onclick="openM('VIMEO_YOUNGKING_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">The Young King</p><p class="wi-ty">Short Film (Teaser)</p></div>
       </div>
 
-      <div class="wi w" data-vimeo="VIMEO_BRIEFEXCHANGES_ID">
+      <div class="wi w t-reveal" data-vimeo="VIMEO_BRIEFEXCHANGES_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#2a2030,#1a1420)"><span style="font-size:3.5rem">Brief Exchanges</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film · Award Winner</p><p class="wi-cl">Brief Exchanges</p><p class="wi-cr">Dir. Ashley Versher · Black Women Film Network Best Editing</p><a href="#" class="wi-btn" onclick="openM('VIMEO_BRIEFEXCHANGES_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Brief Exchanges</p><p class="wi-ty">Short Film · Best Editing Award</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_MAX_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_MAX_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#282028,#181218)"><span style="font-size:2rem">Max</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film (Trailer)</p><p class="wi-cl">Max</p><p class="wi-cr">Dir. Ant McPhail · Rhode Island Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MAX_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Max</p><p class="wi-ty">Short Film (Trailer)</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_MARSHES_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_MARSHES_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#1e2820,#121814)"><span style="font-size:2rem">The Marshes</span></div>
         <div class="wi-hov"><p class="wi-ty">Feature Film (Trailer)</p><p class="wi-cl">The Marshes</p><p class="wi-cr">Dir. Roger Scott · 28 Productions · Deluxe Australia</p><a href="#" class="wi-btn" onclick="openM('VIMEO_MARSHES_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">The Marshes</p><p class="wi-ty">Feature Film (Trailer)</p></div>
       </div>
 
-      <div class="wi" data-vimeo="VIMEO_SOLOTRIP_ID">
+      <div class="wi t-reveal" data-vimeo="VIMEO_SOLOTRIP_ID">
         <div class="wi-bg" style="background:linear-gradient(135deg,#302018,#201410)"><span style="font-size:2rem">Solo Trip</span></div>
         <div class="wi-hov"><p class="wi-ty">Short Film (Teaser)</p><p class="wi-cl">Solo Trip</p><p class="wi-cr">Dir. Travis Roman · NY Shorts Int'l Film Festival</p><a href="#" class="wi-btn" onclick="openM('VIMEO_SOLOTRIP_ID');return false;"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>Watch</a></div>
         <div class="wi-lbl"><p class="wi-cl">Solo Trip</p><p class="wi-ty">Short Film (Teaser)</p></div>
@@ -390,24 +480,26 @@ section { position:relative; overflow:hidden; }
   <div class="wipe-panel"></div>
   <div class="about-deco" id="aboutDeco">"</div>
   <div style="position:relative;z-index:2">
-    <span class="aqm">"</span>
-    <p class="about-q">I never made one of my discoveries through a process of rational thinking.<cite>— Albert Einstein</cite></p>
-    <div class="about-body">
+    <span class="aqm t-reveal d0">"</span>
+    <p class="about-q t-reveal d1">I never made one of my discoveries through a process of rational thinking.<cite>— Albert Einstein</cite></p>
+    <div class="about-body t-reveal d2">
       <p>Jessica Mutascio is an award-winning editor whose ability to think beyond the frame has seen her jumping across genres, all while bringing a distinctive edge to commercials, music videos, and both short and longform film.</p>
-      <p>Comfortable editing everything from action to comedy to fashion, her style and love of collaboration has seen her working with high profile clients and directors across the US and Australia.</p>
-      <p>Currently splitting her time between New York City and the San Francisco Bay Area — though always down to hop on a plane.</p>
+      <p>Comfortable editing everything from action to comedy to fashion, her style and love of collaboration has seen her working with a number of high profile clients and directors across the US and Australia.</p>
+      <p>When she is not sitting and thinking in dark rooms, Jessica enjoys yoga, running, traveling, and pretending she is on Masterchef. Currently she splits her time between New York City and the San Francisco Bay Area — though she's always down to hop on a plane.</p>
     </div>
   </div>
   <div style="position:relative;z-index:2">
-    <p class="acc-h">Selected Accolades</p>
+    <p class="acc-h t-reveal d0">Selected Accolades</p>
     <ul class="acc-list">
-      <li class="acc-item"><span class="acc-aw">Flickerfest — Best Editing, Australian Short</span><span class="acc-pr">"Backpedal"</span></li>
-      <li class="acc-item"><span class="acc-aw">Cannes Young Director Award — Gold</span><span class="acc-pr">"Backpedal"</span></li>
-      <li class="acc-item"><span class="acc-aw">Spikes Asia Glass Award for Change</span><span class="acc-pr">Carefree — "The Matriarchs"</span></li>
-      <li class="acc-item"><span class="acc-aw">Australian Screen Editors — Best Open Content</span><span class="acc-pr">Canon "Shine"</span></li>
-      <li class="acc-item"><span class="acc-aw">Australian Screen Editors — Best Music Video</span><span class="acc-pr">We Are the Brave — "Your Ghost"</span></li>
-      <li class="acc-item"><span class="acc-aw">Black Women Film Network — Best Editing</span><span class="acc-pr">"Brief Exchanges"</span></li>
-      <li class="acc-item"><span class="acc-aw">London International Award — Best New Director</span><span class="acc-pr">"Backpedal"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Flickerfest — Best Editing, Australian Short</span><span class="acc-pr">"Backpedal"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Cannes Young Director Award — Gold</span><span class="acc-pr">"Backpedal"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Cannes New Creator Showcase</span><span class="acc-pr">"Backpedal"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Ciclope Award — Best New Talent in Direction, Gold</span><span class="acc-pr">"Backpedal"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Spikes Asia Glass Award for Change</span><span class="acc-pr">Carefree — "The Matriarchs"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Australian Screen Editors — Best Open Content</span><span class="acc-pr">Canon "Shine"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Australian Screen Editors — Best Music Video</span><span class="acc-pr">We Are the Brave — "Your Ghost"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">Black Women Film Network — Best Editing</span><span class="acc-pr">"Brief Exchanges"</span></li>
+      <li class="acc-item t-reveal"><span class="acc-aw">London International Award — Best New Director, Silver</span><span class="acc-pr">"Backpedal"</span></li>
     </ul>
   </div>
 </section>
@@ -419,11 +511,70 @@ section { position:relative; overflow:hidden; }
     <div class="cc cc1"></div><div class="cc cc2"></div>
   </div>
   <div class="contact-deco" id="contactDeco">Hello</div>
-  <p class="c-eye">Let's Work Together</p>
-  <h2 class="c-ttl">Get<br>In Touch</h2>
-  <p class="c-sub">Available for commercials, music videos,<br>short &amp; longform. Based in New York City<br>and the San Francisco Bay Area.</p>
-  <a href="mailto:hello@jessicamutascio.com" class="c-email">hello@jessicamutascio.com</a>
-  <p class="c-loc">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
+
+  <p class="c-eye t-reveal d0">Representation &amp; Enquiries</p>
+  <h2 class="c-ttl t-reveal d1">Get<br>In Touch</h2>
+
+  <div class="rep-grid t-reveal d2">
+
+    <div class="rep-block">
+      <p class="rep-co">The Den Editorial <span class="rep-region">US</span></p>
+      <div class="rep-list">
+        <div class="rep-row">
+          <span class="rep-name">Jennifer Mersis</span>
+          <span class="rep-role">Senior EP</span>
+          <a href="tel:+13109902883" class="rep-link">+1 (310) 990 2883</a>
+          <a href="mailto:jennifer@thedenedit.com" class="rep-link">jennifer@thedenedit.com</a>
+          <a href="https://thedeneditorial.com" target="_blank" class="rep-link rep-web">thedeneditorial.com ↗</a>
+        </div>
+        <div class="rep-row">
+          <span class="rep-name">Rána Martin</span>
+          <span class="rep-role">EP — Los Angeles</span>
+          <a href="tel:+16462817338" class="rep-link">+1 (646) 281 7338</a>
+          <a href="mailto:rana@thedenedit.com" class="rep-link">rana@thedenedit.com</a>
+        </div>
+        <div class="rep-row">
+          <span class="rep-name">Laurenn Reed</span>
+          <span class="rep-role">EP — New York</span>
+          <a href="tel:+13478347574" class="rep-link">+1 (347) 834 7574</a>
+          <a href="mailto:laurenn@thedenedit.com" class="rep-link">laurenn@thedenedit.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rep-block">
+      <p class="rep-co">The Editors <span class="rep-region">Australia</span></p>
+      <div class="rep-list">
+        <div class="rep-row">
+          <span class="rep-name">Nicoletta Rousianos</span>
+          <span class="rep-role">Managing Director</span>
+          <a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a>
+          <a href="mailto:nicoletta@theeditors.com.au" class="rep-link">nicoletta@theeditors.com.au</a>
+          <a href="http://www.theeditors.com.au" target="_blank" class="rep-link rep-web">theeditors.com.au ↗</a>
+        </div>
+        <div class="rep-row">
+          <span class="rep-name">Rita Gagliardi</span>
+          <span class="rep-role">EP — Sydney</span>
+          <a href="tel:+61295190666" class="rep-link">+61 (0)2 9519 0666</a>
+          <a href="mailto:rita@theeditors.com.au" class="rep-link">rita@theeditors.com.au</a>
+        </div>
+        <div class="rep-row">
+          <span class="rep-name">Charlotte Griffiths</span>
+          <span class="rep-role">EP — Melbourne</span>
+          <a href="tel:+61391883687" class="rep-link">+61 (0)3 9188 3687</a>
+          <a href="mailto:charlotte@theeditors.com.au" class="rep-link">charlotte@theeditors.com.au</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="direct-contact t-reveal d3">
+    <p class="rep-direct-label">All other enquiries</p>
+    <a href="mailto:jessica.mutascio@gmail.com" class="c-email">jessica.mutascio@gmail.com</a>
+  </div>
+
+  <p class="c-loc t-reveal d4">New York City &nbsp;·&nbsp; San Francisco Bay Area &nbsp;·&nbsp; Worldwide</p>
   <div class="c-foot"><p>© 2024 Jessica Mutascio</p><p>Editor</p></div>
 </section>
 
@@ -456,7 +607,6 @@ const panels   = sections.map(s => s.querySelector('.wipe-panel'));
 const nav  = document.getElementById('nav');
 const prog = document.getElementById('prog');
 
-// Parallax elements
 const heroOrbs      = document.getElementById('heroOrbs');
 const reelWord      = document.getElementById('reelWord');
 const workBlobs1    = document.getElementById('workBlobs1');
@@ -465,46 +615,60 @@ const contactDeco   = document.getElementById('contactDeco');
 const contactCircles= document.getElementById('contactCircles');
 
 const navMap = {
-  hero:'green', reel:'dark', commercial:'light',
+  hero:'dark', reel:'dark', commercial:'light',
   narrative:'dark', about:'light', contact:'green'
 };
-let lastNav = 'green';
+let lastNav = 'dark';
 
-function ease(t) {
-  // Cubic ease-out — snappy at start, smooth landing
-  return 1 - Math.pow(1 - t, 3);
-}
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+// Track which sections are currently revealed
+const revealedState = new Map();
 
 function frame() {
   const sy  = window.scrollY;
   const vh  = window.innerHeight;
-  const docH= document.body.scrollHeight - vh;
+  const docH = document.body.scrollHeight - vh;
 
   // Progress bar
-  if (docH > 0) prog.style.width = Math.min(sy/docH*100,100)+'%';
+  if (docH > 0) prog.style.width = Math.min(sy / docH * 100, 100) + '%';
 
   // ── WIPE PANELS ──
+  // Each wipe-panel slides from translateY(0%) → translateY(-100%)
+  // The wipe completes when the section top is 20% into the viewport
+  // (i.e. rect.top < vh*0.2), giving a snappy reveal before you've
+  // scrolled far in. Once complete, panel is fully gone and stays gone
+  // until you scroll back up past the section entry point.
   sections.forEach((sec, i) => {
     const panel = panels[i];
     if (!panel) return;
-    const rect = sec.getBoundingClientRect();
 
-    // t goes 0→1 as section scrolls from viewport-bottom to viewport-top
-    // We complete the wipe in the first 80% of that travel for snappiness
-    const raw = (1 - rect.top / vh) / 0.8;
-    const t   = Math.max(0, Math.min(1, raw));
-    const y   = -ease(t) * 100;
+    const rect = sec.getBoundingClientRect();
+    // Progress: 0 when section top = viewport bottom, 1 when section top = 20% from top
+    // Range: rect.top goes from vh (section entering) to vh*0.2 (wipe complete)
+    const range = vh - vh * 0.2;
+    const raw = (vh - rect.top) / range;
+    const t = Math.max(0, Math.min(1, raw));
+    const y = -easeOut(t) * 100;
     panel.style.transform = `translateY(${y}%)`;
+
+    // Toggle .revealed once wipe is fully done (t >= 1)
+    // and remove it when section scrolls back above viewport
+    const shouldReveal = t >= 1;
+    if (shouldReveal !== revealedState.get(sec)) {
+      revealedState.set(sec, shouldReveal);
+      sec.classList.toggle('revealed', shouldReveal);
+    }
   });
 
   // ── PARALLAX ──
   const p = id => -(document.getElementById(id)?.getBoundingClientRect().top ?? 0) / vh;
-  if (heroOrbs)       heroOrbs.style.transform       = `translateY(${sy*.24}px)`;
-  if (reelWord)       reelWord.style.transform       = `translateY(${p('reel')    *38}px)`;
-  if (workBlobs1)     workBlobs1.style.transform     = `translateY(${p('commercial')*44}px)`;
-  if (aboutDeco)      aboutDeco.style.transform      = `translateY(${p('about')   *55}px)`;
-  if (contactDeco)    contactDeco.style.transform    = `translateY(${p('contact') *42}px)`;
-  if (contactCircles) contactCircles.style.transform = `translateY(${p('contact') *28}px)`;
+  if (heroOrbs)        heroOrbs.style.transform        = `translateY(${sy * 0.24}px)`;
+  if (reelWord)        reelWord.style.transform        = `translateY(${p('reel')        * 38}px)`;
+  if (workBlobs1)      workBlobs1.style.transform      = `translateY(${p('commercial') * 44}px)`;
+  if (aboutDeco)       aboutDeco.style.transform       = `translateY(${p('about')      * 55}px)`;
+  if (contactDeco)     contactDeco.style.transform     = `translateY(${p('contact')    * 42}px)`;
+  if (contactCircles)  contactCircles.style.transform  = `translateY(${p('contact')    * 28}px)`;
 
   // ── NAV ──
   let active = 'green';
