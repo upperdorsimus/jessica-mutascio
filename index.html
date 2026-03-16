@@ -32,15 +32,11 @@ body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);overflow-x:h
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;justify-content:space-between;align-items:center;
-  padding:24px 52px;
-  background:transparent;
-  transition:background .5s,padding .35s;
-}
-nav.scrolled{
   padding:14px 52px;
   background:rgba(30,24,20,.93);
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(107,158,138,.12);
+  transition:padding .35s;
 }
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;letter-spacing:.08em;color:var(--white);text-decoration:none;}
 .nav-links{display:flex;gap:28px;list-style:none;}
@@ -224,14 +220,14 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 #contact{
   min-height:var(--vh);background:var(--sage);
   display:flex;flex-direction:column;justify-content:flex-start;
-  padding:0 52px 80px;position:relative;overflow:hidden;
+  padding:0 52px 80px;position:relative;
 }
 .contact-inner{display:flex;flex-direction:column;justify-content:center;flex:1;padding-top:32px;}
-.cc-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.cc-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;clip-path:inset(0);}
 .cc{position:absolute;border-radius:50%;filter:blur(70px);}
 .cc1{width:500px;height:500px;right:-150px;top:-100px;background:rgba(61,107,88,.45);}
 .cc2{width:350px;height:350px;left:-100px;bottom:-80px;background:rgba(107,158,138,.35);}
-.c-deco{position:absolute;right:-10px;bottom:-80px;font-family:'Cormorant Garamond',serif;font-size:clamp(10rem,20vw,18rem);font-weight:300;font-style:italic;color:rgba(61,107,88,.22);line-height:1;pointer-events:none;user-select:none;clip-path:inset(0 0 0 0);}
+.c-deco{position:absolute;right:-10px;bottom:-80px;font-family:'Cormorant Garamond',serif;font-size:clamp(10rem,20vw,18rem);font-weight:300;font-style:italic;color:rgba(61,107,88,.22);line-height:1;pointer-events:none;user-select:none;clip-path:inset(0);overflow:hidden;}
 .c-eye{font-size:.58rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,239,228,.62);margin-bottom:16px;position:relative;z-index:3;}
 .c-ttl{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,7rem);font-weight:300;font-style:italic;color:var(--white);line-height:.9;margin-bottom:44px;position:relative;z-index:3;}
 .rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;position:relative;z-index:3;}
@@ -512,7 +508,6 @@ window.addEventListener('scroll', () => {
   const sy   = window.scrollY;
   const docH = document.body.scrollHeight - window.innerHeight;
   if (docH > 0) prog.style.width = Math.min(sy / docH * 100, 100) + '%';
-  nav.classList.toggle('scrolled', sy > 80);
 
   // Section watermark label
   const ids = ['commercial','narrative','about','contact'];
