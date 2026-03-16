@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Jessica Mutascio — Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);overflow-x:h
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;justify-content:space-between;align-items:center;
-  padding:14px 52px;
+  /* padding-top extends nav into the iOS safe area (status bar) */
+  padding:calc(14px + env(safe-area-inset-top)) 52px 14px;
   background:rgba(30,24,20,.93);
   backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(107,158,138,.12);
@@ -108,7 +109,7 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
   min-height:var(--vh); /* iOS-safe — no black bar */
   background:var(--ink);
   display:flex;flex-direction:column;justify-content:center;
-  padding:120px 52px 80px;
+  padding:calc(100px + env(safe-area-inset-top)) 52px 80px;
   overflow:hidden;
 }
 .orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
@@ -129,7 +130,9 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 
 /* ── STICKY HEADING ── */
 .sec-sticky{
-  position:sticky;top:60px;z-index:30;
+  position:sticky;
+  top:calc(60px + env(safe-area-inset-top));
+  z-index:30;
   padding:20px 52px 16px;
   margin-bottom:32px;
 }
