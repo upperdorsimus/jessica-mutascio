@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<script>
+  // Set --vh before first render so hero is exactly right height on iPhone
+  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -106,22 +110,28 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 /* ── HERO ── */
 #hero{
   min-height:var(--vh);
-  background:#1E1814; /* exact match with nav bg */
-  display:flex;flex-direction:column;justify-content:center;
-  padding:calc(100px + env(safe-area-inset-top)) 52px 80px;
+  background:#1E1814;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 52px calc(80px + env(safe-area-inset-bottom));
   overflow:hidden;
+  position:relative;
+}
+/* Hero content sits in lower 60% of screen, always below nav */
+.hero-inner{
+  position:relative;z-index:2;
+  padding-bottom:60px;
 }
 .orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .orb{position:absolute;border-radius:50%;filter:blur(100px);}
 .orb1{width:700px;height:600px;top:-150px;right:-120px;background:rgba(61,107,88,.35);}
 .orb2{width:500px;height:500px;bottom:-80px;left:-100px;background:rgba(107,158,138,.2);}
 .orb3{width:300px;height:300px;bottom:160px;right:280px;background:rgba(196,120,74,.18);}
-.hero-inner{position:relative;z-index:2;}
+.hero-inner{position:relative;z-index:2;padding-bottom:0;}
 .h-eye{font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:22px;opacity:0;animation:up .9s ease .3s forwards;}
 .h-name{font-family:'Italiana',serif;font-size:clamp(5rem,13vw,12rem);font-weight:400;line-height:.9;color:var(--white);margin-bottom:36px;letter-spacing:.02em;opacity:0;animation:up 1s ease .5s forwards;}
 .h-name em{font-style:italic;color:var(--straw);}
 .h-sub{font-size:.72rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,239,228,.4);line-height:2.2;opacity:0;animation:up 1s ease .7s forwards;}
-.h-hint{position:absolute;bottom:44px;left:52px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadein 1s ease 1.4s forwards;}
+.h-hint{display:flex;align-items:center;gap:12px;opacity:0;animation:fadein 1s ease 1.4s forwards;margin-top:32px;position:relative;z-index:2;}
 .h-hint span{font-size:.57rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,228,.35);}
 .bdots{display:flex;gap:5px;}
 .bd{width:5px;height:5px;border-radius:50%;background:rgba(245,239,228,.35);animation:blink 1.5s ease infinite;}
@@ -267,7 +277,7 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 @media(max-width:860px){
   nav,nav.scrolled{padding:14px 22px;}
   .nav-links{gap:16px;}
-  #hero{padding:100px 22px 80px;}
+  #hero{padding:0 22px calc(60px + env(safe-area-inset-bottom));}
   .h-hint{left:22px;}
   .sec-sticky{padding:16px 22px 12px;}
   .sec-body{padding:0 22px 0;}
@@ -490,15 +500,6 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── iOS safe viewport height fix ──
-// On iPhone, 100vh includes the browser chrome causing overflow.
-// We measure the actual visible height and set it as --vh.
-function setVh() {
-  document.documentElement.style.setProperty('--vh', window.innerHeight + 'px');
-}
-setVh();
-window.addEventListener('resize', setVh);
-
 // ── Mark JS active (enables hiding/reveal CSS) ──
 
 const nav   = document.getElementById('nav');
