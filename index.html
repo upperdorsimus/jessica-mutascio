@@ -32,10 +32,9 @@ body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);overflow-x:h
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;justify-content:space-between;align-items:center;
-  /* padding-top extends nav into the iOS safe area (status bar) */
   padding:calc(14px + env(safe-area-inset-top)) 52px 14px;
-  background:rgba(30,24,20,.93);
-  backdrop-filter:blur(14px);
+  /* Fully opaque ink — exactly matches hero bg, invisible seam on iPhone */
+  background:#1E1814;
   border-bottom:1px solid rgba(107,158,138,.12);
   transition:padding .35s;
 }
@@ -106,8 +105,8 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 
 /* ── HERO ── */
 #hero{
-  min-height:var(--vh); /* iOS-safe — no black bar */
-  background:var(--ink);
+  min-height:var(--vh);
+  background:#1E1814; /* exact match with nav bg */
   display:flex;flex-direction:column;justify-content:center;
   padding:calc(100px + env(safe-area-inset-top)) 52px 80px;
   overflow:hidden;
