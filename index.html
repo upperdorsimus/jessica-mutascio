@@ -61,10 +61,14 @@ nav{
 }
 
 /* ── SECTIONS ── */
-section{position:relative;}
+section{position:relative; z-index:1;}
 section{padding-bottom:50vh;}
-#hero{padding-bottom:0;}
+#hero{padding-bottom:0; z-index:20;} /* hero always on top */
 #contact{padding-bottom:80px;}
+#commercial{z-index:2;}
+#narrative{z-index:2;}
+#about{z-index:2;}
+#contact{z-index:2;}
 
 /* ── SCROLL ANIMATIONS ──
    Content is ALWAYS visible by default.
@@ -111,10 +115,14 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 #hero{
   min-height:var(--vh);
   background:#1E1814;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 52px calc(80px + env(safe-area-inset-bottom));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  /* Top padding accounts for fixed nav so content is visually centred */
+  padding:calc(80px + env(safe-area-inset-top)) 52px 80px;
   overflow:hidden;
   position:relative;
+  z-index:20;
 }
 /* Hero content sits in lower 60% of screen, always below nav */
 .hero-inner{
@@ -126,7 +134,6 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 .orb1{width:700px;height:600px;top:-150px;right:-120px;background:rgba(61,107,88,.35);}
 .orb2{width:500px;height:500px;bottom:-80px;left:-100px;background:rgba(107,158,138,.2);}
 .orb3{width:300px;height:300px;bottom:160px;right:280px;background:rgba(196,120,74,.18);}
-.hero-inner{position:relative;z-index:2;padding-bottom:0;}
 .h-eye{font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,239,228,.45);margin-bottom:22px;opacity:0;animation:up .9s ease .3s forwards;}
 .h-name{font-family:'Italiana',serif;font-size:clamp(5rem,13vw,12rem);font-weight:400;line-height:.9;color:var(--white);margin-bottom:36px;letter-spacing:.02em;opacity:0;animation:up 1s ease .5s forwards;}
 .h-name em{font-style:italic;color:var(--straw);}
@@ -141,7 +148,7 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 .sec-sticky{
   position:sticky;
   top:calc(60px + env(safe-area-inset-top));
-  z-index:30;
+  z-index:15; /* below hero (20) so never shows above it */
   padding:20px 52px 16px;
   margin-bottom:32px;
 }
@@ -275,14 +282,19 @@ section.in .acc-item.tr:nth-child(9){transition-delay:.94s}
 
 /* ── RESPONSIVE ── */
 @media(max-width:860px){
-  nav,nav.scrolled{padding:14px 22px;}
+  nav{padding:calc(10px + env(safe-area-inset-top)) 22px 10px;}
   .nav-links{gap:16px;}
-  #hero{padding:0 22px calc(60px + env(safe-area-inset-bottom));}
+  #hero{
+    padding:calc(80px + env(safe-area-inset-top)) 22px 60px;
+    min-height:var(--vh);
+  }
   .h-hint{left:22px;}
   .sec-sticky{padding:16px 22px 12px;}
   .sec-body{padding:0 22px 0;}
-  #about{padding:0 22px 60px;} #about .about-inner{grid-template-columns:1fr;gap:32px;} #contact .contact-inner{padding-top:24px;}
-  #contact{padding:80px 22px 60px;}
+  #about{padding:0 22px 60px;}
+  #about .about-inner{grid-template-columns:1fr;gap:32px;}
+  #contact .contact-inner{padding-top:24px;}
+  #contact{padding:0 22px 60px;}
   .rep-grid{grid-template-columns:1fr;gap:28px;}
   .wgrid{grid-template-columns:1fr;}
   .wi.w{grid-column:span 1;}
